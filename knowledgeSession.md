@@ -212,13 +212,12 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 * A single nucleotide variant may change a DNA sequence from CGA to GGA.
 * If this change occurs in a protein-coding region, it may change the amino acid sequence of a protein. Those proteins, or the hormones they help form, can affect biological functions such as ovarian follicle development and response, not just in POI, but theoretically also in IVF
 * There could be a correlation between carrying that variant and IVF success rates.
-
-The point is the chain of events: a single nucleotide change can alter a codon, which can alter an amino acid, which can alter a protein or hormone-related pathway, which may influence reproductive function and IVF outcomes.
+* The point is the chain of events: a single nucleotide change can alter a codon, which can alter an amino acid, which can alter a protein or hormone-related pathway, which may influence reproductive function and IVF outcomes.
 
 
 ---
 
-# The power of that is:
+# The power of that is querying across a massive range of interconnected entities:
 
 * The fact that POI, Premature Ovarian Insufficiency, is conceptually linked to IVF enables us to explore this research direction, and in this case can be identified as a research question manually.
 * But in some cases, we have many different partially related concepts: different amino acids, thousands of genes, and different ways of categorizing disease.
@@ -233,16 +232,8 @@ The point is the chain of events: a single nucleotide change can alter a codon, 
 * You can trust third party existing knowledge graphs based on rigid schema ontologies to manage data provenance well and provide a rich extension to your data points with pathways 
 * Knowledge graphs work with relationships in any direction.
 
-![](typesOfGraphsInBiology.png)
+* ![](typesOfGraphsInBiology.png)
 
----
-
-# The power of ontology:
-
-* Having relationships defiend in an ontology schema means confusion over similar entities, entities that are part of each other, dissimilar but similarly named entities, a recurrent risk in biology, or the same entity with different names, such as "human" vs "Homo sapiens", can be approached systemically for better **data provenance**.
-* You can trust your data itself better when you have approached how relationships are defined for the whole dataset together, rather than manually adding nodes or graph relationships - which works at first but can result in large disreprencies or data provenance issues down the line 
-
-![](labelingConfusion.jpeg)
 
 ---
 
@@ -261,6 +252,17 @@ The point is the chain of events: a single nucleotide change can alter a codon, 
 * Queries can follow biologically meaningful paths across genes, proteins, pathways, phenotypes, treatments, and diseases.
 * Knowledge graphs are especially useful when data for a specific subtype is sparse, because they can help identify biologically or clinically related conditions, phenotypes, mechanisms, or patient cohorts.
 * This allows researchers to use structured prior knowledge to generate hypotheses, retrieve relevant comparator groups, and enrich downstream analysis.
+
+---
+
+# Example 1: Query the Knowledge Base for candidates to investigate:
+
+* Which ion channels or gap-junction proteins are connected to certain phenotypes,
+* are expressed in the relevant tissue,
+* and are targetable by known compounds?
+
+= a list of gap-junction proteins to investigate further for research applicability.
+
 
 ---
 
@@ -316,39 +318,32 @@ Different datasets doing this makes managing and drawing insights across omics d
 
 ---
 
-The goal of BioCypher is to resolve the difficulty of:
+# The goal of BioCypher is to resolve the difficulty of:
 
 (A) understanding the applicability of knowledge graphs for biological research inquiry in your subdomain
 (B) enabling rapid research with knowledge graphs
 (C) supporting the provision of your own data to this analysis
 (D) sharing your data with the wider scientific community to achieve faster overall progress in biology
 
+
+
 ---
 
-# BioCypher configures stringent regulation
+# The power of ontology:
+
+* Having relationships defiend in an ontology schema means confusion over similar entities, entities that are part of each other, dissimilar but similarly named entities, a recurrent risk in biology, or the same entity with different names, such as "human" vs "Homo sapiens", can be approached systemically for better **data provenance**.
+* You can trust your data itself better when you have approached how relationships are defined for the whole dataset together, rather than manually adding nodes or graph relationships - which works at first but can result in large disreprencies or data provenance issues down the line 
+
+![](labelingConfusion.jpeg)
+
+
+---
+# BioCypher configures stringent regulation, with project-specific Schemas
 
 * Rather than having questions later, such as "is seizure a Symptom, Clinical Finding, or PatientFeature in this context?", you decide when integrating data.
-* And when you have 10 curious questions one morning, you want predictability in what you should ask.
-* Are disease IDs coded IDs or free text? This may not matter, but all must be consistent. This helps data provenance.
-
----
-
-# Example 1: Query the Knowledge Base for candidates to investigate:
-
-* Which ion channels or gap-junction proteins are connected to certain phenotypes,
-* are expressed in the relevant tissue,
-* and are targetable by known compounds?
-
-= a list of gap-junction proteins to investigate further for research applicability.
-
----
-
-# Example 2: BioCypher for historic, as-yet unconnected, integratable work in reanalysis papers
-
-* 1. Say you have 3 different datasets from different experiments focusing on different genes.
-* 2. You can use an adapter to bring the information in, and then use ontology data from, e.g. UniProt, to understand what genetics, proteins, and pathways occur in common between those different separate datasets.
-* 3. You can make conclusions with the proteins between these 3 datasets in a 4th paper.
-
+* Being able to have an absolute record of what decision was made means you can make sure queries are exhaustive for your data, and slight semantic differences cannot prevent finding everything that actually satisfies the query in your dataset
+* (e.g. recording seizure as a Clinical Finding, but only looking for "Symptoms" and not finding it)
+* Are disease IDs coded IDs or free text? This may not matter, but all must be consistent.
 ---
 
 # But, my data would take a long time to convert into ontology concepts...
@@ -362,23 +357,44 @@ It can take time, but we do not need to do everything manually.
 
 # Further ways to make your data work with ontologies:
 
-* Annotation can add structured meaning to raw data.
-  Convert text into a graph node, edge, or property. For free text, it can be partially automated: scispaCy, MetaMap, CLAMP, MedCAT. You can also cluster text embeddings or use prompt-based local text classification.
+* You can use tools to convert text into a graph node, edge, or property. For free text, it can be partially automated: scispaCy, MetaMap, CLAMP, MedCAT. You can also cluster text embeddings or use prompt-based local text classification.
 
-* Tabular-to-graph tools can help.
-  OntoWeaver can map tables into semantic knowledge graphs and can be used with BioCypher-style graph construction.
+* For Tabular data, OntoWeaver can map tables into semantic knowledge graphs in BioCypher.
 
-* The goal is not perfect automation.
-  The goal is a reproducible mapping pipeline where uncertain mappings, thresholds, and assumptions are visible.
+* Your pipeline for data does not need to be perfect, but with BioCypher and other tools it can be a reproducible mapping pipeline where assumptions about data and relationships are consistent, recorded, and can be applied identically to additional data you collect.
 
 ---
 
-# Why Adapters exist
+# Example 2: BioCypher for historic, as-yet unconnected, integratable work in reanalysis papers
 
-* Adapters provide an ontology and dataset that can augment your data.
+* 1. Imagine you have 3 different datasets from different experiments focusing on different genes.
+* 2. You can use an adapter to bring the information in, and then use ontology data from, e.g. UniProt, to understand what genetics, proteins, and pathways occur in common between those different separate datasets.
+* 3. You can make conclusions with the proteins between these 3 datasets in a 4th paper.
+
+---
+
+
+# Quick topic: Adapters
+
+* Adapters provide an ontology and large datasets from a realm of biology that can augment your data by being used in queries.
 * After using an adapter with your data, your queries, e.g. via Neo4j, can use the extra relationship data matched to entities in your dataset from the adapter’s extended datasets.
-* Example: Adapter has a dataset on which ion channels are expressed in different tissues, and which compounds can target them.
+* Example: Adapter has a dataset on which ion channels are expressed in different tissues, and which compounds can target them. Your data has some of the ion channels in the dataset, so your queries can use the same tissue and compounds information when you use the Adapter.
+
+---
+
+# What the communities Adapters allow you to do:
 * This allows you to ask richer biological questions immediately, without manually rebuilding all known relationships yourself.
+* It provides a model of how relationships are often defined in this area of Biology (e.g. how to represent relationships)
 * It lets your dataset inherit useful context from established biological resources, such as tissue expression, protein function, disease links, and compound targeting.
 
-<!-- could add: "How to go from dataset CSVs to schemas" -->
+
+---
+
+# Summary
+
+- Knowledge Graphs help us make data with relationships navigable and queryable
+- Defining Schemas for your ontology in Biocypher lets us enforce data consistencty and establish data provenance. Schemas give you powerful insight into what queries you can make.
+- Biocypher brings you community adapters that allow existing rich ontologies and datasets with provenance to be immediately applied to your research data for new research insights, candidates and sample selection with the context of wider datasets and wider biology than you can easily create alone.
+- Now we understand the theory here, we will cover how these actually interact in practise, from your CSV to adapter fusion.
+
+
