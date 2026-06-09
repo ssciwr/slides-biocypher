@@ -1,0 +1,72 @@
+name: Render Marp slides
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    name: Render Marp HTML artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Find Marp markdown files
+        id: marp
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          files="marp-files.txt"
+          : > "$files"
+          found=false
+
+          while IFS= read -r -d '' file; do
+            if grep -q 'marp: true' "$file"; then
+              printf '%s\0' "$file" >> "$files"
+              found=true
+            fi
+          done < <(find . -type f -name '*.md' -print0)
+
+          echo "found=$found" >> "$GITHUB_OUTPUT"
+
+      - name: Render HTML beside each deck
+        if: steps.marp.outputs.found == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          artifact_dir="$RUNNER_TEMP/marp-html-artifacts"
+          mkdir -p "$artifact_dir"
+
+          while IFS= read -r -d '' file; do
+            output="${file%.md}_rendered.html"
+            artifact_output="$artifact_dir/${output#./}"
+
+            pnpm dlx @marp-team/marp-cli@latest "$file" --html --allow-local-files -o "$output"
+
+            mkdir -p "$(dirname "$artifact_output")"
+            cp "$output" "$artifact_output"
+          done < marp-files.txt
+
+      - name: Upload rendered HTML
+        if: steps.marp.outputs.found == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: marp-html
+          path: ${{ runner.temp }}/marp-html-artifacts
+          if-no-files-found: error
