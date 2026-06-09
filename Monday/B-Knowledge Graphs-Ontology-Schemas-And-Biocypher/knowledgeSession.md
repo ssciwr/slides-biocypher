@@ -275,11 +275,14 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 
 ---
 
-# Using graph-informed evidence in models
+# Using graph-informed evidence for model training
 
-* **For model training**, graph-derived relationships can support cohort expansion, feature engineering, or transfer-learning-style approaches, provided the related conditions are biologically and clinically comparable.
+* **For model training**, graph-derived relationships can support cohort expansion from historical cases of similar medical conditions, feature engineering, or transfer-learning-style approaches, provided the related conditions are biologically and clinically comparable (e.g. for decision tree features)
 * If the subtype is genuinely related to a better-characterized condition, incorporating graph-informed features or comparator cohorts may improve recall, precision, or F1 score. This should be validated empirically.
 
+---
+
+# Using graph-informed evidence for prediction
 * **For prediction**, when a subtype has few direct cases, the graph can help identify historical patients with similar diagnoses, phenotypes, laboratory findings, or clinical relationships.
 * Example feature: `proportion_of_similar_historical_negative_cases_above_0.85`
 * This could mean: the proportion of historical negative cases that share at least 85% of predefined clinical relationships with the current patient.
@@ -331,8 +334,8 @@ Different datasets doing this makes managing and drawing insights across omics d
 
 # The power of ontology:
 
-* Having relationships defiend in an ontology schema means confusion over similar entities, entities that are part of each other, dissimilar but similarly named entities, a recurrent risk in biology, or the same entity with different names, such as "human" vs "Homo sapiens", can be approached systemically for better **data provenance**.
-* You can trust your data itself better when you have approached how relationships are defined for the whole dataset together, rather than manually adding nodes or graph relationships - which works at first but can result in large disreprencies or data provenance issues down the line 
+* Having relationships defiend in an ontology schema means confusion over similar entities, entities that are part of each other, dissimilar but similarly named entities, a recurrent risk in biology, or the same entity with different names, such as "human" vs "Homo sapiens", can be approached systemically for better **data consistency**.
+* You can trust your data itself better when you have approached how relationships are defined for the whole dataset together, rather than manually adding nodes or graph relationships - which works at first but can result in large discrepancies or data provenance issues down the line 
 
 ![](labelingConfusion.jpeg)
 
@@ -350,8 +353,7 @@ Different datasets doing this makes managing and drawing insights across omics d
 
 It can take time, but we do not need to do everything manually.
 
-* Entity linking maps text or labels to ontology/database IDs.
-  e.g. “seizure” → HPO: Seizure; “EGFR” → UniProt/HGNC gene/protein ID
+* Entity linking can autoamtically map text or labels to ontology/database IDs, e.g. “seizure” → HPO: Seizure; “EGFR” → UniProt/HGNC gene/protein ID
 
 ---
 
@@ -393,7 +395,10 @@ It can take time, but we do not need to do everything manually.
 # Summary
 
 - Knowledge Graphs help us make data with relationships navigable and queryable
-- Defining Schemas for your ontology in Biocypher lets us enforce data consistencty and establish data provenance. Schemas give you powerful insight into what queries you can make.
+- Defining Schemas with an ontology like BioLink provides consistent data you can more readily fuse with information, using Adapters(which for example also use BioLink).
+- Schemas therefore give you powerful insight into what queries you can make, a map of what filtering options you have.
+
+# Summary - how the BioCypher Adapter concept enhances your ability to interact with your data at a richer level
 - Biocypher brings you community adapters that allow existing rich ontologies and datasets with provenance to be immediately applied to your research data for new research insights, candidates and sample selection with the context of wider datasets and wider biology than you can easily create alone.
 - Now we understand the theory here, we will cover how these actually interact in practise, from your CSV to adapter fusion.
 
