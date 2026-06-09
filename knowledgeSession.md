@@ -10,6 +10,8 @@ background-size: 70px auto;
 }
 -
 
+---
+
 # Knowledge Graphs & Ontologies in Biology
 
 ![](typesOfGraphsInBiology.png)
@@ -53,13 +55,13 @@ background-size: 70px auto;
 * An ontology helps decide what concept is being described and how it relates to symptoms, diagnoses, observations, and patient features.
 
 ---
-
-# Ontology example: cooking onions
+# Ontology example: sautéing broccoli
 
 * Even discussing how you cook something needs an ontology.
-* In a pan, onions can be sweating, softening, browning, burning, or caramelising.
-* “Caramelising onions” is not just “heating onions”: it implies slower cooking, reduced water, browning reactions, sweetness, texture change, and a different result from frying quickly.
-* Without shared terms, two people can describe the same pan very differently, or describe different processes with the same word.
+* In a pan, broccoli can be steaming, sautéing, charring, softening, staying crisp-tender, or becoming mushy.
+* "Sautéing broccoli" is not only “heating broccoli” - it implies cooking quickly with a small amount of fat, managing moisture, encouraging some browning, preserving texture, and producing a different result from boiling or steaming.
+* Without shared terms, two people can describe the same pan or process, very differently
+
 
 ---
 
@@ -118,8 +120,7 @@ transcription factor:
 ---
 
 # BioCypher schema example
-
-<pre><code class="language-yaml">gene:
+<pre style="font-size: 0.82rem; line-height: 1.4; padding: 1rem; overflow-x: auto; white-space: pre; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px;"><code class="language-yaml" style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;">gene:
   represented_as: node
   preferred_id: hgnc.symbol
   input_label: gene
@@ -141,8 +142,7 @@ transcriptional regulation:
   source: transcription factor
   target: gene
   input_label: transcriptional regulation
-  properties:
-    ...
+  properties: ...
 </code></pre>
 
 ---
@@ -164,24 +164,26 @@ transcriptional regulation:
 
 ---
 
-# Knowledge graph: This is just Neo4j!
+# Knowledge graph: With Neo4J
 
-<pre><code class="language-cypher">MATCH (tf:`transcription factor`)-[r:`transcriptional regulation`]->(g:gene)
+
+* Neo4j allows you to write queries, which can each match based upon multiple relationships and nodes
+
+* This asks which transcription factors activate which genes, and what references support the relationship.
+<pre><code style="font-size:0.85em" class="language-cypher">MATCH (tf:`transcription factor`)-[r:`transcriptional regulation`]->(g:gene)
 WHERE r.activation_or_inhibition = "activation"
 RETURN tf.name, g.name, r.references
 LIMIT 10
 </code></pre>
 
-* Neo4j allows you to write complex queries.
-* This asks which transcription factors activate which genes, and what references support the relationship.
+* These feel human-writtn and AI can support writing these too when you provide the relevant relationships to query.
 
 ---
 
 # Ontologies
 
 * Help us agree upon the way to describe our domain
-* Have specific ways of characterizing relationships(*edges*) consistently
-* Relationships preserve the biological context and its provenance
+* Have specific ways of characterizing relationships(*edges*) in their biological context within a dataset consistently
 * Relationships can be defined according to the semantics of the research field and the theories at hand
 * Represent the wider fidelity of data, rather than data without clarified, identified relationships
 
@@ -190,8 +192,8 @@ LIMIT 10
 # Encoding relationships
 
 * Relationships in biology help understand the causes of events that we measure in data.
-* Due to the pure scale of sometimes hard-to-detect information, we need to make sure we share the same language when describing and working with this data.
 * For much data, like genes or cells, we have a rich ontology of everything that relates to them, such as what the cell is made of, what receptors it has, and what encodes its behaviour, which is relevant for research.
+* For those existing, well defined areas, you can fuse information with large third party datasets to use with your own queries for Knowledge Graph information.
 
 ---
 
@@ -244,7 +246,7 @@ The point is the chain of events: a single nucleotide change can alter a codon, 
 
 ---
 
-# Knowledge graphs are absolute
+# Knowledge graphs are statements of fact, not probability:
 
 * This expresses or leads to that.
 * This can express or can lead to that.
@@ -255,20 +257,40 @@ The point is the chain of events: a single nucleotide change can alter a codon, 
 
 # Knowledge graphs
 
-* The data is that relationships are there, based on the ontology you have used.
-* The graph becomes useful because entities are not isolated rows; they are connected through typed, interpretable relationships.
-* Queries can then follow chains of biological meaning across genes, proteins, pathways, phenotypes, and diseases.
+* A knowledge graph becomes useful because entities are not treated as isolated rows; they are connected through typed, interpretable relationships.
+* Queries can follow biologically meaningful paths across genes, proteins, pathways, phenotypes, treatments, and diseases.
+* Knowledge graphs are especially useful when data for a specific subtype is sparse, because they can help identify biologically or clinically related conditions, phenotypes, mechanisms, or patient cohorts.
+* This allows researchers to use structured prior knowledge to generate hypotheses, retrieve relevant comparator groups, and enrich downstream analysis.
+
+---
+
+# Moving from sparse data to relevant evidence
+
+* BioCypher can help structure heterogeneous biomedical data as a knowledge graph, making it easier to connect a rare subtype to related conditions through historical cases.
+* These graph connections can support **cohort discovery**, **comparator group selection**, and **feature engineering**.
+* The key idea is not simply "adding more data," but finding **more relevant evidence** through biologically and clinically meaningful relationships defined by ontologies avbout existing subtypes and conditions.
+* Whereas LLMS are stochastic and unpredictable, using Graph Queries is predictable and rules based
+
+---
+
+# Using graph-informed evidence in models
+
+* **For model training**, graph-derived relationships can support cohort expansion, feature engineering, or transfer-learning-style approaches, provided the related conditions are biologically and clinically comparable.
+* If the subtype is genuinely related to a better-characterized condition, incorporating graph-informed features or comparator cohorts may improve recall, precision, or F1 score. This should be validated empirically.
+
+* **For prediction**, when a subtype has few direct cases, the graph can help identify historical patients with similar diagnoses, phenotypes, laboratory findings, or clinical relationships.
+* Example feature: `proportion_of_similar_historical_negative_cases_above_0.85`
+* This could mean: the proportion of historical negative cases that share at least 85% of predefined clinical relationships with the current patient.
 
 ---
 
 # Knowledge graphs can have spatial data: Mediterranean map
 
-* Example has spatial data in itself and how it is shown.
-* The right side has relationships and a viewer for those.
-
 ![](mediterranianExample.png)
 
 ---
+
+# Knowledge Graphs can still be exposed in spatial interfaces:
 
 ![](mediterranianExample2.png)
 
