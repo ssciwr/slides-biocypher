@@ -28,4 +28,6 @@ p { text-align: center; }
 
 ![height:400px](options.png)
 
-
+the three options - Python, agentic, ontoweaver
+set up VSCode, Python, environments, BioCypher, neo4j (participants 1)
+discuss projects goals and experiences in more detail (participants 2), show SKGs
