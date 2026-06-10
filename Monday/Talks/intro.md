@@ -35,12 +35,13 @@ p { text-align: center; }
 
 <style scoped>
 table { font-size: 0.4em; }
-table tbody tr:nth-child(n+4) td:nth-child(7) { background-color: #c1cce3; }
+table tbody tr:nth-child(n+5) td:nth-child(7) { background-color: #c1cce3; }
 table thead tr th { background-color: #c1cce3; }
 </style>
 
 | | | Monday, 15th | Tuesday, 16th | Wednesday, 17th | Thursday, 18th | Friday, 19th |
 |--|--|--|--|--|--|--|
+registration | 8:45-9:15 | in front of the conference room | | | | | |
 plenary talks | 09:15-10:45 | Sebastian Lobentanzer <br> Steffen Vogler	| Jan Baumbach (online) <br> Johann Dreo | Carl Herrmann	<br> Alberto Santos Delgado <br> Judith Wodke | Tunca Dogan <br> Claire Laudy | Highlights and contributing to BioCypher
 coffee break | 10:45-11:00 | | | | | |
 hands-on session A | 11:00-12:30 | Knowledge graphs and BioCypher	| Hands-on OntoWeaver tutorial (Johann Dreo) | AI-supported open-source software development | OntoWeaver's fusion module (Johann Dreo) | Quantify participant achievements, feedback and workshop closing |
