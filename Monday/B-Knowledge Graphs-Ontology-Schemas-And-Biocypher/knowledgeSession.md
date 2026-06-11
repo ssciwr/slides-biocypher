@@ -13,102 +13,6 @@ style: |
   }
 ---
 <!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
-<!--
-# Editor review: added / changed content
-
-Delete these review slides before presenting.
-
-* Added `.cite-text` CSS for small light grey citations.
-* Added Guarino ontology citation to ontology definition / shared ontology slides.
-* Added Biolink citation for shared biomedical schema / relationships.
-* Added BioCypher citation for the purpose and goals of BioCypher.
-* Added a bioelectric provenance example using McMillen, Novak & Levin, 2020.
-* Changed “Knowledge graphs are statements of fact” to “Knowledge graphs store explicit assertions.”
-* Changed IVF / POI wording to FSH / FSHR, with FSHR amino-acid-changing polymorphisms rather than FMR1 / CGG.
-* Added Loutradis et al. (2006) citation for FSHR polymorphisms and IVF/ICSI ovarian response.
-* Removed the claim that external datasets increase statistical power or act like extra samples.
-* Removed the broccoli / cooking ontology example.
-* Removed recall / precision / F1 claim from the ML slide.
--->
----
-
-# Editor review: exact added wording
-
-* Ontology is about machine-readable representation.
-* Ontology gives the shared biological meaning.
-* The BioCypher schema makes that meaning usable for this specific graph.
-* Citations are not only slide references.
-* They can be stored as graph provenance.
-* A relationship can have a source, method, dataset, paper, and confidence.
-* Knowledge graphs store explicit assertions.
-* They do not make biology absolute.
-* Explicit assertions can be queried, filtered, validated, embedded, or used as additional features.
-* Formal schemas and constraints can be processed computationally.
-* For this lecture, Neo4j queries, schema validation, and graph embeddings are the clearer examples.
-
----
-<!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
-<!--
-# Editor review: IVF / POI wording
-
-Use this wording:
-
-* We understand some genetic elements behind IVF response.
-* We understand a lesser proportion behind POI.
-* For IVF patients, we measure follicle response during treatment.
-* FSH stimulates follicle development through FSHR.
-* FSHR variation has been associated with different ovarian response to stimulation in IVF/ICSI patients.
-* Removed the claim that BioCypher or external datasets increase statistical power like extra samples.
-
-Use this question:
-
-**Theoretical study: Can we use known FSH, FSHR, pathway, and phenotype relationships to explore overlap between POI biology and IVF follicle response?**
-
-Removed:
-
-* “previously called POF”
--->
----
-<!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
-<!--
-# Editor review: figure / screenshot suggestions
-
-1. **Ontology / Biolink slide**
-   * Biolink Model class / relationship page.
-   * One Biolink category page, e.g. gene, disease, chemical entity.
-
-2. **BioCypher schema slide**
-   * `schema_config.yaml` screenshot.
-   * BioCypher docs screenshot showing schema configuration.
-
-3. **Provenance / citation slide**
-   * McMillen, Novak & Levin paper page.
-   * A simple provenance table: claim, organism, method, source.
-
-4. **Neo4j query / graph preview slide**
-   * Cypher query returning nodes and edges.
-   * Neo4j graph preview with labelled nodes.
-
-5. **IVF / POI / follicle response slide**
-   * FSHR polymorphism / IVF ovarian response figure.
-   * Simple diagram: FSH → FSHR → follicle development → follicle response.
--->
----
-<!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
-<!--
-# Editor review: citations added
-
-Guarino, N., Oberle, D., & Staab, S. (2009). What is an ontology? In *Handbook on ontologies* (pp. 1–17). Springer.
-
-Unni, D. R., Moxon, S. A., Bada, M., Brush, M., Bruskiewich, R., Caufield, J. H., et al. (2022). Biolink Model: A universal schema for knowledge graphs in clinical, biomedical, and translational science. *Clinical and Translational Science, 15*(8), 1848–1855.
-
-Lobentanzer, S., Aloy, P., Baumbach, J., Bohar, B., Carey, V. J., Charoentong, P., et al. (2023). Democratizing knowledge representation with BioCypher. *Nature Biotechnology, 41*(8), 1056–1059.
-
-McMillen, P., Novak, R., & Levin, M. (2020). Toward decoding bioelectric events in Xenopus embryogenesis: New methodology for tracking interplay between calcium and resting potentials in vivo. *Journal of Molecular Biology, 432*(2), 605–620.
-
-Loutradis, D., Patsoula, E., Minas, V., Koussidis, G. A., Antsaklis, A., Michalas, S., & Makrigiannakis, A. (2006). FSH receptor gene polymorphisms have a role for different ovarian response to stimulation in patients entering IVF/ICSI-ET programs. *Journal of Assisted Reproduction and Genetics, 23*(4), 177–184.
--->
----
 
 # Knowledge Graphs & Ontologies in Biology
 
@@ -118,26 +22,43 @@ Loutradis, D., Patsoula, E., Minas, V., Koussidis, G. A., Antsaklis, A., Michala
 
 # Why we use Knowledge Graphs
 
-- Biology is extremely relational: encoding, interaction, affecting, targeting.
-- Understanding the full toolchain and how it works with the pure complexity and amount of different entities, such as proteins, genes, and codons, is difficult without automation.
-- We can represent a relationship with the concept of graphs that connect our entities by their relationships. In these graphs, our entities are traditionally “nodes”.
+- Biology is extremely relational: **encoding, interaction, affecting, targeting.**
+- Understanding the full semantic connections between different entities, such as specific proteins, genes, and codons, is difficult without automation.
 
----
+--- 
 
 # Nodes vs Edges
 
 ![](nodesAndEdges.png)
 
-* Nodes are the biological entities in the graph, such as proteins, genes, transcription factors, pathways, diseases, or compounds.
-* Edges are the typed relationships between nodes, such as `interacts_with`, `regulates`, `expressed_in`, `targets`, or `associated_with`. **You can define this for your own dataset with BioCypher!**
+* Nodes are the biological semantic entities in the graph, such as proteins, genes, transcription factors, pathways, diseases, or compounds.
+* Edges are the typed **relationships** between nodes, such as `interacts_with`, `regulates`, `expressed_in`, `targets`, or `associated_with`. **You can define this for your own dataset with BioCypher!**
 
 ---
 
-# Nodes vs Edges - COLLECTRI Example
+# Nodes vs Edges - COLLECTRI data Example
 
 * In a regulatory interaction dataset such as COLLECTRI, transcription factors and genes can be represented as nodes, while experimentally supported regulatory relationships can be represented as edges.
-* Example: one transcription factor node may activate or inhibit a target gene node.
 * Both kinds of data are important: nodes tell us *what* exists, and edges tell us *how entities relate biologically*.
+* Any node can have any number of edge relationships. or regulatory relationships in this example
+
+
+---
+# We can use existing semantic relationships from the known body of scientific knowledge
+
+* Such as:
+* ![](geneEncodesProtein.png)
+* a gene encoding a protein
+* ![](geneRegulatingAnotherGene.png)
+* a gene regulating another gene.
+---
+
+# What these graphs enable
+![](geneRegulatingAnotherGene.png)
+
+* In these graphs, nodes represent biological entities, and edges represent semantic relationships.
+* We can **query** this knowledge to go from a protein to the gene which encodes it, and generate a list of the different genes which regulate that gene.
+* This allows us to use the existing scientific body of relationships to identify interesting candidate genes for further investigation.
 
 ---
 
@@ -171,6 +92,8 @@ Loutradis, D., Patsoula, E., Minas, V., Koussidis, G. A., Antsaklis, A., Michala
 
 ---
 
+![bioLinkLogo.png]()
+
 # Biolink as shared biomedical language
 
 * Biolink gives shared classes and relationships for biomedical knowledge graphs.
@@ -182,13 +105,14 @@ Loutradis, D., Patsoula, E., Minas, V., Koussidis, G. A., Antsaklis, A., Michala
 
 ---
 
-# Why schema files exist
+# Why schema files are useful to you
 
-* They make the graph predictable.
+* They make the graph understandable
 * They say which labels are valid nodes and edges.
 * They prevent every adapter from inventing slightly different labels for the same things.
-* They give you a guide as to what you will use to query Neo4j with later.
-* You start with the schema.
+* They give you a guide as to what you will use to query Neo4j with later
+
+<!-- they prvoide a concise definition of the biological concepts and links between them in the dataset -->
 
 ---
 
@@ -258,23 +182,6 @@ transcriptional regulation:
 
 ---
 
-# BioCypher schema example
-
-<pre><code class="language-yaml">transcriptional regulation:
-  is_a: pairwise gene to gene interaction
-  represented_as: edge
-  source: transcription factor
-  target: gene
-  input_label: transcriptional regulation
-  properties:
-    activation_or_inhibition: str
-    resources: str
-    references: str
-    sign_decision: str
-</code></pre>
-
----
-
 # Knowledge graph: With Neo4j
 
 * Neo4j allows you to write queries, which can each match based upon multiple relationships and nodes.
@@ -294,18 +201,17 @@ LIMIT 10
 
 * Help us agree upon the way to describe our domain.
 * Have specific ways of characterising relationships (*edges*) in their biological context within a dataset consistently.
-* Relationships can be defined according to the semantics of the research field and the theories at hand.
-* Represent the wider fidelity of data, rather than data without clarified, identified relationships.
+* Defined according to the semantics of the research field.
+* Represent the wider fidelity of data, rather than data without standardized and identified relationships.
 
 <p class="cite-text">Guarino, N., Oberle, D., & Staab, S. (2009). What is an ontology? In Handbook on ontologies (pp. 1–17). Springer.</p>
 
 ---
 
-# Encoding relationships
+# Encoding relationships in popular datasets to use within your own data
 
-* Relationships in biology help understand the causes of events that we measure in data.
-* For much data, like genes or cells, we have a rich ontology of everything that relates to them, such as what the cell is made of, what receptors it has, and what encodes its behaviour, which is relevant for research.
-* For those existing, well-defined areas, you can link your data to large third-party datasets and query the connected biological context.
+* For much data, like genes or cells, we have a rich existing defined ontology of everything that relates to them, such as what the cell is made of, what receptors it has, and what encodes its behaviour, which is relevant for focused research.
+* For those existing, well-defined areas, you can link your data to large third-party datasets and query that connected biological context.
 
 ---
 <!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
@@ -319,7 +225,6 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 * For IVF patients, we measure follicle response during treatment.
 -->
 ---
-<!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
 <!--
 # Medical study example part two
 
@@ -333,11 +238,10 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 <p class="cite-text">Loutradis, D., Patsoula, E., Minas, V., Koussidis, G. A., Antsaklis, A., Michalas, S., & Makrigiannakis, A. (2006). FSH receptor gene polymorphisms have a role for different ovarian response to stimulation in patients entering IVF/ICSI-ET programs. Journal of Assisted Reproduction and Genetics, 23(4), 177–184.</p>
 -->
 ---
-<!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
 <!--
 # Theoretical study
 
-**Can we use known FSH, FSHR, pathway, and phenotype relationships to explore overlap between POI biology and IVF follicle response?**
+**Theoretical study: Can we use known FSH and pathway relationships to explore overlap between POI biology and IVF follicle response?**
 
 * This is a graph-based research question.
 * It does not mean POI and IVF response are the same.
@@ -345,7 +249,6 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 * We can use the graph to find candidates for further investigation.
 -->
 ---
-<!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
 <!--
 # The power of that is querying across a massive range of interconnected entities:
 
@@ -357,8 +260,8 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 
 # Why Knowledge Graphs are useful to you
 
-* If you believe the processes, pathways, and subtypes in your data provide context to research, you can connect your data to other datasets with prescribed ontologies.
-* That makes it easier to manage provenance, duplication, and the biological context around candidate relationships.
+* If you believe the processes, pathways, and subtypes in your data provide **semantic context** to research, you can connect your data to other datasets.
+* That makes it easier to manage data duplication, and the biological context around relationships.
 * Third-party knowledge graphs can provide prior biological context, but they do not become extra experimental samples by default.
 * Knowledge graphs work with relationships in any direction.
 
@@ -368,9 +271,7 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 
 # Knowledge graphs store explicit assertions
 
-* They do not make biology absolute.
-* This expresses or leads to that.
-* This can express or can lead to that.
+* Rather than continous values, they clarify the existence of relationships, whether "can", "has", "contains" or "entails"
 * The relationship itself is the data: source node, relationship type, target node.
 * Uncertainty can still be represented, but it should be modelled explicitly as evidence, confidence, or provenance.
 
@@ -379,20 +280,16 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 # Computational value of explicit assertions
 
 * Explicit assertions can be queried in Neo4j.
-* They can be filtered.
-* They can be validated against schema constraints.
-* They can be embedded.
-* They can be used as additional features.
+* They can be filtered, validated against schema constraints and embedded as features for statistical and machine learning models(e.g. historical cases).
 * Formal schemas and constraints can be processed computationally.
-* For this lecture, Neo4j queries, schema validation, and graph embeddings are the clearer examples.
 
 ---
 
-# Citations and provenance can be graph content
+# Citations and provenance are key for relaible research
 
-* Citations are not only slide references.
-* They can be stored as graph provenance.
-* A relationship can have a source, method, dataset, paper, and confidence.
+* For data provenance, standardization and graph libraries support citing data information
+* In Biology, your data's source and batch is critical for batch effects and comparability
+* A relationship or entire dataset can have a source, method, dataset, paper, and confidence.
 
 <pre><code class="language-text">Xenopus embryo ─has_measured_bioelectric_state→ resting membrane potential
 
