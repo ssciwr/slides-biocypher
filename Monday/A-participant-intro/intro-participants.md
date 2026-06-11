@@ -27,3 +27,27 @@ background-size: 70px auto;
 * Your institution
 * Your project
 * Your goal(s) for this week
+
+--- 
+
+# Learning goals for the workshop
+
+<style scoped>
+li { font-size: 0.7em; }
+</style>
+* SKGs: 
+    * What they are
+    * What needs to be defined
+    * How to use them 
+    * `neo4j` as a visualization and query engine
+* Adapters:
+    * Harmonizing data and metadata at different levels
+    * `Croissant` for structured metadata
+    * How to build them
+* Software:
+    * Use Python UI / `OntoWeaver` / agentic AI to use `BioCypher`
+    * Use `OntoWeaver` for information fusion
+    * The `BioCypher` ecosystem
+* How to collaborate on Open-Source Software projects
+* Software Engineering and AI engineering best practices
+* Use cases and scientific insights of the other participants  

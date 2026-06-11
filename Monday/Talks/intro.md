@@ -45,7 +45,6 @@ registration | 8:45-9:15 | in front of the conference room | | | | | |
 plenary talks | 09:15-10:45 | Sebastian Lobentanzer <br> Steffen Vogler	| Jan Baumbach (online) <br> Johann Dreo | Carl Herrmann	<br> Alberto Santos Delgado <br> Judith Wodke | Tunca Dogan <br> Claire Laudy | Highlights and contributing to BioCypher
 coffee break | 10:45-11:00 | | | | | |
 hands-on session A | 11:00-12:30 | Knowledge graphs and BioCypher | Hands-on OntoWeaver tutorial (Johann Dreo) | AI-supported open-source software development | OntoWeaver's fusion module (Johann Dreo) | Achievements, Feedback and end of workshop |
-+
 lunch break | 12:30-13:30 | | | | |Leaving premise for optional, cash requiring Cafe Botanik lunch (10 minutes away)|
 hands-on session B | 13:30-15:00 | Knowledge graphs and BioCypher | Adapters in BioCypher | Harmonizing biomedical data | Building Adapters in BioCypher | |
 coffee break | 15:00-15:15 | | | | | |
