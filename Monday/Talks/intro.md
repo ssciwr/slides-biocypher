@@ -57,7 +57,7 @@ hands-on session C | 15:15-16:45 | Knowledge graphs and BioCypher | BioCypher MC
 * Workshop organizers and volunteers wear red lanyards instead of black
 * Feel free to approach us with questions!
 
-**A huge thanks to the local organizers Edwin Carreno, James Bowyer, Yasamin Fazeli (all SSC) and to our volunteers Amey Narwadkar and Anand Deshpande!**
+**A huge thanks to the local organizers Edwin Carreño, James Bowyer, Yasamin Fazeli (all SSC) and to our volunteers Amey Narwadkar and Anand Deshpande!**
 
 **Also thanks to our additional organizers Sebastian Lobentanzer, Claire Laudy and Johann Dreo!**
 

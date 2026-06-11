@@ -25,8 +25,16 @@ background-size: 70px auto;
 
 * Your name
 * Your institution
-* Your project
+* Your project, or what you would like to work on in the future
 * Your goal(s) for this week
+
+<!--
+Speaker notes:
+- Welcome participants and explain that this opening is meant to make the group visible to itself.
+- Mention that three minutes is a guideline, not a strict exam-like limit, but encourage everyone to be concise so all participants have time.
+- If the group is large, ask people to focus especially on their project and what they hope to get out of the workshop.
+- Transition: after hearing from everyone, we will align on the general learning goals for the week.
+-->
 
 --- 
 
@@ -35,14 +43,14 @@ background-size: 70px auto;
 <style scoped>
 li { font-size: 0.7em; }
 </style>
-* SKGs: 
+* Semantic Knowledge Graphs (SKGs): 
     * What they are
     * What needs to be defined
     * How to use them 
     * `neo4j` as a visualization and query engine
 * Adapters:
     * Harmonizing data and metadata at different levels
-    * `Croissant` for structured metadata
+    * [`Croissant`](https://mlcommons.org/working-groups/data/croissant/) for structured metadata
     * How to build them
 * Software:
     * Use Python UI / `OntoWeaver` / agentic AI to use `BioCypher`
@@ -51,3 +59,13 @@ li { font-size: 0.7em; }
 * How to collaborate on Open-Source Software projects
 * Software Engineering and AI engineering best practices
 * Use cases and scientific insights of the other participants  
+
+
+<!--
+Speaker notes:
+- For Semantic Knowledge Graphs, explain that participants will learn what needs to be modeled before data can become a useful graph: entities, relationships, identifiers, metadata, and semantics.
+
+- For adapters, highlight that they are the bridge between heterogeneous source data and a harmonized BioCypher graph.
+
+- Mention that Croissant appears in the workshop as a way to describe datasets and metadata in a structured, reusable form.
+-->

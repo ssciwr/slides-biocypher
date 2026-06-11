@@ -35,7 +35,7 @@ background-size: 70px auto;
 
 Three options:
 
-Code - Low Code - AI-assisted
+    Code - Low Code - AI-assisted
 
 We will get started with these three options tomorrow.
 
@@ -44,8 +44,9 @@ We will get started with these three options tomorrow.
 <div>
 
 ![height:150px](code-UI.png)
-![height:150px](AI-UI.png)
 ![height:150px](ontoweaver-UI.png)
+![height:150px](AI-UI.png)
+
 
 </div>
 </div>
@@ -61,5 +62,5 @@ We will get started with these three options tomorrow.
 
 <span style="background-color:#16a34a; color:white; padding:2px 8px; border-radius:4px; font-weight:bold;">Group B</span>
 - discuss your projects goals and experiences with BioCypher
-- show your SKGs
+- show your Semantic Knowledge Graphs (SKGs)
 - explain how you answer your scientific question: your use case
