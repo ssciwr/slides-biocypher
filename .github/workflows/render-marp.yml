@@ -15,15 +15,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: bahmutov/npm-install@v1
         with:
-          node-version: 22
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
+          working-directory: .
 
       - name: Find Marp markdown files
         id: marp
@@ -57,7 +51,7 @@ jobs:
             output="${file%.md}_rendered.html"
             artifact_output="$artifact_dir/${output#./}"
 
-            pnpm dlx @marp-team/marp-cli@latest "$file" --html --allow-local-files -o "$output"
+            pnpm exec marp "$file" --html --allow-local-files -o "$output"
 
             mkdir -p "$(dirname "$artifact_output")"
             cp "$output" "$artifact_output"
