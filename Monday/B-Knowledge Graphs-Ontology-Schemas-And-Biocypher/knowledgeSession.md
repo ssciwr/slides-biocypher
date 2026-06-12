@@ -69,7 +69,7 @@ style: |
 * In biology, this matters because the same thing can be named, grouped, or interpreted differently across datasets.
 * In computational work, an ontology is a formal, explicit specification of a shared conceptualisation.
 
-<p class="cite-text">Guarino, N., Oberle, D., & Staab, S. (2009). What is an ontology? In Handbook on ontologies (pp. 1–17). Springer.</p>
+<p class="cite-text" data-marpit-fragment="5">Guarino, N., Oberle, D., & Staab, S. (2009). What is an ontology? In Handbook on ontologies (pp. 1–17). Springer.</p>
 
 ---
 
@@ -88,7 +88,7 @@ style: |
 * Ontology gives the shared biological meaning.
 * The BioCypher schema makes that meaning usable for this specific graph.
 
-<p class="cite-text">Guarino, N., Oberle, D., & Staab, S. (2009). What is an ontology? In Handbook on ontologies (pp. 1–17). Springer.</p>
+<p class="cite-text" data-marpit-fragment="5">Guarino, N., Oberle, D., & Staab, S. (2009). What is an ontology? In Handbook on ontologies (pp. 1–17). Springer.</p>
 
 ---
 
@@ -101,7 +101,7 @@ style: |
 * This makes comparisons across datasets easier.
 * It also makes graph queries more predictable.
 
-<p class="cite-text">Unni, D. R., Moxon, S. A., Bada, M., Brush, M., Bruskiewich, R., Caufield, J. H., et al. (2022). Biolink Model: A universal schema for knowledge graphs in clinical, biomedical, and translational science. Clinical and Translational Science, 15(8), 1848–1855.</p>
+<p class="cite-text" data-marpit-fragment="5">Unni, D. R., Moxon, S. A., Bada, M., Brush, M., Bruskiewich, R., Caufield, J. H., et al. (2022). Biolink Model: A universal schema for knowledge graphs in clinical, biomedical, and translational science. Clinical and Translational Science, 15(8), 1848–1855.</p>
 
 ---
 
@@ -204,7 +204,7 @@ LIMIT 10
 * Defined according to the semantics of the research field.
 * Represent the wider fidelity of data, rather than data without standardized and identified relationships.
 
-<p class="cite-text">Guarino, N., Oberle, D., & Staab, S. (2009). What is an ontology? In Handbook on ontologies (pp. 1–17). Springer.</p>
+<p class="cite-text" data-marpit-fragment="5">Guarino, N., Oberle, D., & Staab, S. (2009). What is an ontology? In Handbook on ontologies (pp. 1–17). Springer.</p>
 
 ---
 
@@ -235,7 +235,7 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 * Those receptor and pathway differences may affect biological functions such as ovarian follicle development and treatment response.
 * The point is the chain of events: hormone signal, receptor response, pathway activity, follicle response.
 
-<p class="cite-text">Loutradis, D., Patsoula, E., Minas, V., Koussidis, G. A., Antsaklis, A., Michalas, S., & Makrigiannakis, A. (2006). FSH receptor gene polymorphisms have a role for different ovarian response to stimulation in patients entering IVF/ICSI-ET programs. Journal of Assisted Reproduction and Genetics, 23(4), 177–184.</p>
+<p class="cite-text" data-marpit-fragment="7">Loutradis, D., Patsoula, E., Minas, V., Koussidis, G. A., Antsaklis, A., Michalas, S., & Makrigiannakis, A. (2006). FSH receptor gene polymorphisms have a role for different ovarian response to stimulation in patients entering IVF/ICSI-ET programs. Journal of Assisted Reproduction and Genetics, 23(4), 177–184.</p>
 -->
 ---
 <!--
@@ -299,7 +299,7 @@ context: Xenopus embryogenesis
 measurement: calcium and resting potential dynamics
 </code></pre>
 
-<p class="cite-text">McMillen, P., Novak, R., & Levin, M. (2020). Toward decoding bioelectric events in Xenopus embryogenesis: New methodology for tracking interplay between calcium and resting potentials in vivo. Journal of Molecular Biology, 432(2), 605–620.</p>
+<p class="cite-text" data-marpit-fragment="4">McMillen, P., Novak, R., & Levin, M. (2020). Toward decoding bioelectric events in Xenopus embryogenesis: New methodology for tracking interplay between calcium and resting potentials in vivo. Journal of Molecular Biology, 432(2), 605–620.</p>
 
 ---
 
@@ -332,7 +332,7 @@ measurement: calcium and resting potential dynamics
 * These graph connections can support **cohort discovery**, **comparator group selection**, and **feature engineering**.
 * Whereas LLMs are stochastic and unpredictable, graph queries are predictable and rules-based.
 
-<p class="cite-text">Lobentanzer, S., Aloy, P., Baumbach, J., Bohar, B., Carey, V. J., Charoentong, P., et al. (2023). Democratizing knowledge representation with BioCypher. Nature Biotechnology, 41(8), 1056–1059.</p>
+<p class="cite-text" data-marpit-fragment="8">Lobentanzer, S., Aloy, P., Baumbach, J., Bohar, B., Carey, V. J., Charoentong, P., et al. (2023). Democratizing knowledge representation with BioCypher. Nature Biotechnology, 41(8), 1056–1059.</p>
 
 ---
 
@@ -392,7 +392,7 @@ Different datasets doing this makes managing and drawing insights across omics d
 (C) supporting the provision of your own data to this analysis
 (D) sharing your data with the wider scientific community to achieve faster overall progress in biology
 
-<p class="cite-text">Lobentanzer, S., Aloy, P., Baumbach, J., Bohar, B., Carey, V. J., Charoentong, P., et al. (2023). Democratizing knowledge representation with BioCypher. Nature Biotechnology, 41(8), 1056–1059.</p>
+<p class="cite-text" data-marpit-fragment="1">Lobentanzer, S., Aloy, P., Baumbach, J., Bohar, B., Carey, V. J., Charoentong, P., et al. (2023). Democratizing knowledge representation with BioCypher. Nature Biotechnology, 41(8), 1056–1059.</p>
 
 ---
 
@@ -403,7 +403,7 @@ Different datasets doing this makes managing and drawing insights across omics d
 * It keeps source provenance while mapping data onto biomedical ontologies.
 * It supports task-specific knowledge graphs.
 
-<p class="cite-text">Lobentanzer, S., Aloy, P., Baumbach, J., Bohar, B., Carey, V. J., Charoentong, P., et al. (2023). Democratizing knowledge representation with BioCypher. Nature Biotechnology, 41(8), 1056–1059.</p>
+<p class="cite-text" data-marpit-fragment="5">Lobentanzer, S., Aloy, P., Baumbach, J., Bohar, B., Carey, V. J., Charoentong, P., et al. (2023). Democratizing knowledge representation with BioCypher. Nature Biotechnology, 41(8), 1056–1059.</p>
 
 ---
 
