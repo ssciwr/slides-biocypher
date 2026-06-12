@@ -1,0 +1,116 @@
+Reasoning
+The use of knowledge predicates means we can "reason" or derive additional triplets from the ones we have collected or defined with data. Ontology Hierarchies, like `subclass of`, unlie that:
+
+Drug A treats Disease B
+Disease B is a subclass of Immune System Disease
+= Drug A treats some Immune System Disease(s)
+
+BioLink
+Biolink provides a shared upper level schema  for biomedical entities and relationships. As a researcher you can extend these entities or relationships for your research question. That common grammar makes integration with other data sources more easy, and makes running the same query on two different sets of data easier.
+
+Getting your set up clean for directly resuable science from the start:
+Head Ontology - e.g. Biolink
+defined in Biocypher config - what you will use. Helps bring in Hybrid adapter data later.
+
+Data Provenance - strict mode
+
+Combine these two? Your public adapter could be used by other scientists effortlessly.
+=> Biocypher knowledge graphs are built to foster you in the right direction for reusability
+=> It's far easier than importing data missing licenses/source and identifying that later.
+
+In prcatise you *map your data* to Biolink ontology concepts
+... biolink itself uses OWL (+ RDF?) as the "machinery to operate the knowledge graph"
+biolink is not about establishing *one whole truth* - nor is any knowledge graph in Biology, particularly with batch effects etc- but it's about establishing truthful, inferentiable relationships and data in the context of your research question.
+
+
+
+What is reasoning in this context?
+
+
+What did the Semantic Web's introduction of RDF, RDFS and OWL enable?
+
+Using a shared triples data model for subject-predicate-object to define and type the ontology
+
+What is the nuance between Property and ObjectProperty in OWL?
+Because everything is a Triplet, ObjectProperties are expressed as a triplet (extend clarify)
+
+
+Mapped data to BioLink?
+Graph can be interoperable with other Biolink-aligned resources, to integrate and use for queries, reasoning or other inference.
+
+
+Query example for sub class in Cypher[Neo4J]:
+MATCH (:Drug {name: "Drug A"})-[:TREATS]->(disease:Disease)
+MATCH (disease)-[:IS_A*0..]->(:Disease {name: "Immune system disease"})
+RETURN disease;
+
+
+Alternative, using materialized inference triplets:
+MATCH (:Drug {name: "Drug A"})-[:TREATS_INFERRED]->(:Disease {name: "Immune system disease"})
+RETURN true AS answer;
+
+
+Reasoning = Our process to use our base information to ~infer logical statements
+Drug A treats some immune-system disease <-- Our "Inference"
+
+
+# Cypher example: Path steps
+(disease)-[:IS_A*0..]->(category)
+
+CHeckmark: Rheumatoid arthritis IS_A Immune system disease
+Checkmark: Rheumatoid arthritis IS_A Autoimmune disease IS_A Immune system disease
+
+
+
+Graphs vs SQL/RDBS:
+* For highly connected biomedical questions, the query often mirrors the biological pattern more directly.
+
+* `Find <X> within <Y branch of X> known to be associated with <list of genes> excluding <drugs inapplicable for my research study>`
+
+
+
+
+
+==== Key terms
+Cypher - Neo4Js query language
+
+
+===
+
+Two key use benefits for Biocypher:
+
+* Having a clean, efficient set up for your knowledge graph with batteries included for graph queries - whether you are using your own data, or existing public data
+** to support best research practise, and now, many examples already exist using data you want to use.
+
+* Building complex knowledge graph mappings without redundancy of less sepcific NoSQL implementations, making it possible to construct user-specific KG based on queries, rather than thousand-line procedures of multiple NoSQL queries
+** Biocypher sees having elegant design with discretized schema, manageable even for large projects by utilziing a Seperation of Concerns philosophy, as key. For major successful projects like UniProt from EMBL.
+
+
+=== Why use Biocypher over NoSQL?
+Avoid massing procedure queries and long execution times
+Have clarity and confidencece in Ontology plus, when strict, data provenacne
+
+=== Why use Biocypher over manual python classes/generic frameworks
+Easy access to biology ontologies, adapters pre-existing for a mass of existing data
+
+--> Save time.
+
+
+
+
+===
+
+<!-- don't remember this now -->
+===
+
+---
+Exercise: Get them to move part of the query things into a sentence
+
+
+
+
+===
+
+REMOVE adapter content
+
+ADD OWL / backbone content
