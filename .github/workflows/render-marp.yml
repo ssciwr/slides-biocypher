@@ -15,15 +15,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 22
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
+          node-version: 24
+      - run: npm ci
 
       - name: Find Marp markdown files
         id: marp
@@ -59,7 +54,7 @@ jobs:
 
             mkdir -p "$(dirname "$artifact_output")"
             echo "Rendering $file -> $artifact_output"
-            pnpm dlx @marp-team/marp-cli@latest "$file" --html --allow-local-files -o "$artifact_output"
+            npm exec -- marp "$file" --html --allow-local-files -o "$artifact_output"
           done < marp-files.txt
 
       - name: Upload rendered HTML
