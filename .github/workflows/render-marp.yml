@@ -44,7 +44,7 @@ jobs:
 
           echo "found=$found" >> "$GITHUB_OUTPUT"
 
-      - name: Render HTML beside each deck
+      - name: Render HTML artifacts
         if: steps.marp.outputs.found == 'true'
         shell: bash
         run: |
@@ -57,10 +57,9 @@ jobs:
             output="${file%.md}_rendered.html"
             artifact_output="$artifact_dir/${output#./}"
 
-            pnpm dlx @marp-team/marp-cli@latest "$file" --html --allow-local-files -o "$output"
-
             mkdir -p "$(dirname "$artifact_output")"
-            cp "$output" "$artifact_output"
+            echo "Rendering $file -> $artifact_output"
+            pnpm dlx @marp-team/marp-cli@latest "$file" --html --allow-local-files -o "$artifact_output"
           done < marp-files.txt
 
       - name: Upload rendered HTML
