@@ -308,6 +308,19 @@ transcriptional regulation:
 
 ---
 
+# Knowledge Graphs can be presented as a graph, e.g. Neo4J
+
+![](neo4j.png)
+
+---
+
+# Knowledge Graphs information can be overlaid on spatial data points acting as nodes:
+
+![](spatialKG.png)
+
+---
+
+
 # Querying knowledge graphs with Neo4J
 
 * Neo4j allows you to write queries, which can each `match` based upon multiple relationships and nodes.
@@ -408,7 +421,7 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 ---
 
 
-<!-- ML related, so removed: 
+<!-- ML related, so removed:
 # Example 1: Query the Knowledge Base for candidates to investigate:
 
 * Which ion channels or gap-junction proteins are connected to certain phenotypes,
@@ -451,17 +464,6 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 -->
 ---
 
-# Knowledge graphs can have spatial data: Mediterranean map
-
-![](mediterranianExample1.png)
-
----
-
-# Knowledge Graphs can still be exposed in spatial interfaces:
-
-![](mediterranianExample2.png)
-
----
 
 
 # Challenges with knowledge graphs
