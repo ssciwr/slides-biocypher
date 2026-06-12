@@ -15,9 +15,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - uses: bahmutov/npm-install@v1
+      - uses: actions/setup-node@v6
         with:
-          working-directory: .
+          node-version: 24
+      - run: npm ci
 
       - name: Find Marp markdown files
         id: marp
@@ -51,7 +52,7 @@ jobs:
             output="${file%.md}_rendered.html"
             artifact_output="$artifact_dir/${output#./}"
 
-            pnpm exec marp "$file" --html --allow-local-files -o "$output"
+            npm exec marp "$file" --html --allow-local-files -o "$output"
 
             mkdir -p "$(dirname "$artifact_output")"
             cp "$output" "$artifact_output"
