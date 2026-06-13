@@ -209,7 +209,7 @@ section.node-edge-examples figcaption {
 </ul>
 
 <ul>
-<li data-marpit-fragment="3">Usually, we break down every kind of information in a knowledge graph into Triplets:</li>
+<li data-marpit-fragment="3">Usually, we break down every kind of information in a knowledge graph into triples:</li>
 </ul>
 <p class="cite-text" data-marpit-fragment="3">
 Subject `relationship` Object
@@ -282,7 +282,7 @@ section.node-edge-examples figcaption {
 <ul>
 <li data-marpit-fragment="1">In a regulatory interaction dataset such as COLLECTRI, transcription factors and genes can be represented as nodes, while experimentally supported regulatory relationships can be represented as edges.</li>
 <li data-marpit-fragment="2">Both kinds of data are important: nodes tell us <em>what</em> exists, and edges tell us <em>how entities relate biologically</em>.</li>
-<li data-marpit-fragment="3">Any node can have any number of edge relationships. or regulatory relationships in this example</li>
+<li data-marpit-fragment="3">Any node can participate in multiple edge relationships</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-marpit-fragments="4" data-class="node-edge-examples" data-style="section {
@@ -362,7 +362,7 @@ section.node-edge-examples figcaption {
 <p><img src="geneRegulatingAnotherGene.png" alt="" /></p>
 <ul>
 <li data-marpit-fragment="1">We can &quot;query out&quot; from the root node along a path, looking at its relationships</li>
-<li data-marpit-fragment="2">We &quot;MATCH&quot;(return results) - for relationships we are interested in, e.g. <code>encodes</code> but not others e.g. <code>affects</code> <strong>and the other node(s)</strong></li>
+<li data-marpit-fragment="2">In Cypher, <code>MATCH</code> returns paths that satisfy the node and relationship pattern, e.g. <code>encodes</code> but not others e.g. <code>affects</code> <strong>and the other node(s)</strong></li>
 <li data-marpit-fragment="3">This naturally fits how we model causal relationships conceptually - as causal inference across a path of entities</li>
 <li data-marpit-fragment="4">Or thinking of conditions as sub classes, like <strong>Immune System Disease</strong> being a <code>subclass of</code> <strong>Disease</strong></li>
 </ul>
@@ -445,7 +445,7 @@ section.node-edge-examples figcaption {
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-marpit-fragments="4" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -506,22 +506,8 @@ section.node-edge-examples figcaption {
   font-size: 0.9em;
 }
 ;">
-<h1 id="reasoning">Reasoning</h1>
-<ul>
-<li data-marpit-fragment="1">
-<p>&quot;Extrapolating&quot; further information from the information at hand:</p>
-</li>
-<li data-marpit-fragment="2">
-<p>Drug A <code>treats</code> Disease B</p>
-</li>
-<li data-marpit-fragment="3">
-<p>Disease B is a <code>subclass of</code> Immune System Disease</p>
-</li>
-<li data-marpit-fragment="4">
-<p>= Drug A <code>treats</code> <strong>some</strong> Immune System Disease(s)</p>
-</li>
-</ul>
-<p class="cite-text" data-marpit-fragment="5">Different algorithm options exist to manage how these reasoning inferences can be drawn</p>
+<h1 id="knowledge-graphs-can-be-presented-as-a-graph-eg-neo4j">Knowledge Graphs can be presented as a graph, e.g. Neo4j</h1>
+<p><img src="neo4j.png" alt="" /></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-marpit-fragments="4" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
@@ -584,7 +570,80 @@ section.node-edge-examples figcaption {
   font-size: 0.9em;
 }
 ;">
-<h1 id="biocypher-allows-you-to-reinterpret-old-information-for-new-insgihts">Biocypher allows you to reinterpret old information for new insgihts</h1>
+<h1 id="reasoning">Reasoning</h1>
+<ul>
+<li data-marpit-fragment="1">Inferring further information from the information at hand:</li>
+</ul>
+
+<ul>
+<li data-marpit-fragment="2">Drug A <code>treats</code> Disease B</li>
+<li data-marpit-fragment="3">Disease B is a <code>subclass of</code> Immune System Disease</li>
+<li data-marpit-fragment="4">= Drug A <code>treats</code> <strong>some</strong> Immune System Disease(s)</li>
+</ul>
+<p class="cite-text" data-marpit-fragment="5">Different algorithm options exist to manage how these reasoning inferences can be drawn</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-marpit-fragments="4" data-style="section {
+  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
+  background-repeat: no-repeat;
+  background-position: top 10px right 10px;
+  background-size: 70px auto;
+}
+.cite-text {
+  font-size: 0.5em;
+  color: #aaa;
+}
+section.node-edge-examples .example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+  align-items: start;
+  margin-top: 28px;
+}
+section.node-edge-examples figure {
+  margin: 0;
+  text-align: center;
+}
+section.node-edge-examples img {
+  width: 100%;
+  height: 390px;
+  object-fit: contain;
+}
+section.node-edge-examples figcaption {
+  margin-top: 14px;
+  font-size: 0.9em;
+}
+" lang="C" style="--style:section {
+  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
+  background-repeat: no-repeat;
+  background-position: top 10px right 10px;
+  background-size: 70px auto;
+}
+.cite-text {
+  font-size: 0.5em;
+  color: #aaa;
+}
+section.node-edge-examples .example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+  align-items: start;
+  margin-top: 28px;
+}
+section.node-edge-examples figure {
+  margin: 0;
+  text-align: center;
+}
+section.node-edge-examples img {
+  width: 100%;
+  height: 390px;
+  object-fit: contain;
+}
+section.node-edge-examples figcaption {
+  margin-top: 14px;
+  font-size: 0.9em;
+}
+;">
+<h1 id="biocypher-allows-you-to-reinterpret-old-information-for-new-insights">BioCypher allows you to reinterpret old information for new insights</h1>
 <ul>
 <li data-marpit-fragment="1">
 <ol>
@@ -593,7 +652,7 @@ section.node-edge-examples figcaption {
 </li>
 <li data-marpit-fragment="2">
 <ol start="2">
-<li>You can use BioCypher to import data from each experiment, and provide data fitting connecting your knowledge graph, to establish how these genes are connected (or use an existing public dataset containing that ifnormation)</li>
+<li>You can use BioCypher to import data from each experiment, and provide data fitting connecting your knowledge graph, to establish how these genes are connected (or use an existing public dataset containing that information)</li>
 </ol>
 </li>
 <li data-marpit-fragment="3">
@@ -606,7 +665,7 @@ section.node-edge-examples figcaption {
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-marpit-fragments="4" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-marpit-fragments="4" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -676,7 +735,76 @@ section.node-edge-examples figcaption {
 </ul>
 <p class="cite-text" data-marpit-fragment="5">Guarino, N., Oberle, D., & Staab, S. (2009). What is an ontology? In Handbook on ontologies (pp. 1–17). Springer.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-marpit-fragments="4" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-marpit-fragments="4" data-style="section {
+  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
+  background-repeat: no-repeat;
+  background-position: top 10px right 10px;
+  background-size: 70px auto;
+}
+.cite-text {
+  font-size: 0.5em;
+  color: #aaa;
+}
+section.node-edge-examples .example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+  align-items: start;
+  margin-top: 28px;
+}
+section.node-edge-examples figure {
+  margin: 0;
+  text-align: center;
+}
+section.node-edge-examples img {
+  width: 100%;
+  height: 390px;
+  object-fit: contain;
+}
+section.node-edge-examples figcaption {
+  margin-top: 14px;
+  font-size: 0.9em;
+}
+" lang="C" style="--style:section {
+  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
+  background-repeat: no-repeat;
+  background-position: top 10px right 10px;
+  background-size: 70px auto;
+}
+.cite-text {
+  font-size: 0.5em;
+  color: #aaa;
+}
+section.node-edge-examples .example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+  align-items: start;
+  margin-top: 28px;
+}
+section.node-edge-examples figure {
+  margin: 0;
+  text-align: center;
+}
+section.node-edge-examples img {
+  width: 100%;
+  height: 390px;
+  object-fit: contain;
+}
+section.node-edge-examples figcaption {
+  margin-top: 14px;
+  font-size: 0.9em;
+}
+;">
+<h1 id="owl-rdf-and-rdfs">OWL, RDF, and RDFS</h1>
+<ul>
+<li data-marpit-fragment="1">OWL is a standard language for formal ontologies.</li>
+<li data-marpit-fragment="2">It defines classes, properties, axioms, and reasoning rules.</li>
+<li data-marpit-fragment="3">RDF and RDFS are related standards for triples, labels, domains, ranges, and relationships such as <code>rdfs:subPropertyOf</code>.</li>
+<li data-marpit-fragment="4">Many biomedical ontologies use these standards underneath, even when we interact through friendlier schemas.</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-marpit-fragments="4" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -745,7 +873,7 @@ section.node-edge-examples figcaption {
 <li data-marpit-fragment="4">Not actual data - relationships</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -810,7 +938,7 @@ section.node-edge-examples figcaption {
 <p><img src="ontologyExample.png" alt="" /></p>
 <p class="cite-text" data-marpit-fragment="2">Daniel Himmelstein, Dec 19, 2016</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-marpit-fragments="3" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-marpit-fragments="3" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -878,7 +1006,7 @@ section.node-edge-examples figcaption {
 <li data-marpit-fragment="3">Whereas an ontology can cover many relationships, the Schema only covers relationships we have or expect data for in our study</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-marpit-fragments="3" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-marpit-fragments="3" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -943,10 +1071,10 @@ section.node-edge-examples figcaption {
 <ul>
 <li data-marpit-fragment="1">We often customize the schema to bespokely recognise the information architecture/value intrinsically in our data (which may differ from another information frame)</li>
 <li data-marpit-fragment="2">... to match our research question</li>
-<li data-marpit-fragment="3">What is in one schema, should usually be interally consistent in terms of batch effects</li>
+<li data-marpit-fragment="3">What is in one schema, should usually be internally consistent in terms of batch effects</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-marpit-fragments="4" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-marpit-fragments="4" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1015,7 +1143,7 @@ section.node-edge-examples figcaption {
 <li data-marpit-fragment="4">They give you a guide as to what you will use to query Neo4j with later</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1087,7 +1215,7 @@ section.node-edge-examples figcaption {
 ...
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1168,7 +1296,7 @@ transcription factor:
 ...
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1255,7 +1383,7 @@ transcriptional regulation:
   properties: ...
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-marpit-fragments="4" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-marpit-fragments="4" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1326,7 +1454,7 @@ section.node-edge-examples figcaption {
 <p class="cite-text" data-marpit-fragment="5">Guarino, N., Oberle, D., & Staab, S. (2009). What is an ontology? In Handbook on ontologies (pp. 1–17). Springer.</p>
 <p class="cite-text" data-marpit-fragment="5">* Catch: Batch effects</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1390,7 +1518,7 @@ section.node-edge-examples figcaption {
 <h1 id="example">Example</h1>
 <p><img src="ontologyExample.png" alt="" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1454,13 +1582,13 @@ section.node-edge-examples figcaption {
 <h1 id="biolink-as-shared-biomedical-language">Biolink as shared biomedical language</h1>
 <ul>
 <li data-marpit-fragment="1" style="list-style: none;"><img src="bioLinkLogo.png" alt="Biolink logo" /></li>
-<li data-marpit-fragment="2">Biolink provides a shared upper level schema  for biomedical entities and relationships.</li>
+<li data-marpit-fragment="2">Biolink provides a shared upper level schema for biomedical entities and relationships.</li>
 <li data-marpit-fragment="3">As a researcher you can extend these entities or relationships for your research question.</li>
-<li data-marpit-fragment="4">That common grammar makes integration with other data sources more easy, and makes running the same query on two different sets of data easier.</li>
+<li data-marpit-fragment="4">That common grammar makes integration with other data sources easier, and makes running the same query on two different sets of data easier.</li>
 </ul>
 <p class="cite-text" data-marpit-fragment="5">Unni, D. R., Moxon, S. A., Bada, M., Brush, M., Bruskiewich, R., Caufield, J. H., et al. (2022). Biolink Model: A universal schema for knowledge graphs in clinical, biomedical, and translational science. Clinical and Translational Science, 15(8), 1848–1855.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-fragments="4" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-marpit-fragments="4" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1524,7 +1652,7 @@ section.node-edge-examples figcaption {
 <h1 id="how-you-actually-use-biolink-in-biocypher">How you actually use Biolink in BioCypher</h1>
 <ul>
 <li data-marpit-fragment="1">
-<p>We set our &quot;Head Ontology&quot; in Biocypher to Biolink</p>
+<p>We set our &quot;Head Ontology&quot; in BioCypher to Biolink</p>
 </li>
 <li data-marpit-fragment="2">
 <p>We map our data - imagine CSV columns - into Biolink types</p>
@@ -1537,7 +1665,7 @@ section.node-edge-examples figcaption {
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-marpit-fragments="4" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-marpit-fragments="4" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1614,7 +1742,7 @@ section.node-edge-examples figcaption {
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1675,10 +1803,10 @@ section.node-edge-examples figcaption {
   font-size: 0.9em;
 }
 ;">
-<h1 id="knowledge-graphs-can-be-presented-as-a-graph-eg-neo4j">Knowledge Graphs can be presented as a graph, e.g. Neo4J</h1>
+<h1 id="knowledge-graphs-can-be-presented-as-a-graph-eg-neo4j-1">Knowledge Graphs can be presented as a graph, e.g. Neo4j</h1>
 <p><img src="neo4j.png" alt="" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1742,7 +1870,7 @@ section.node-edge-examples figcaption {
 <h1 id="knowledge-graphs-information-can-be-overlaid-on-spatial-data-points-acting-as-nodes">Knowledge Graphs information can be overlaid on spatial data points acting as nodes:</h1>
 <p><img src="spatialKG.png" alt="" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-marpit-fragments="2" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-marpit-fragments="2" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -1803,7 +1931,7 @@ section.node-edge-examples figcaption {
   font-size: 0.9em;
 }
 ;">
-<h1 id="querying-knowledge-graphs-with-neo4j">Querying knowledge graphs with Neo4J</h1>
+<h1 id="querying-knowledge-graphs-with-neo4j">Querying knowledge graphs with Neo4j</h1>
 <ul>
 <li data-marpit-fragment="1">Neo4j allows you to write queries, which can each <code>match</code> based upon multiple relationships and nodes.</li>
 <li data-marpit-fragment="2">This asks which transcription factors activate which genes, and what references support the relationship.</li>
@@ -1815,128 +1943,6 @@ LIMIT 10
 </code></pre>
 <p class="cite-text" data-marpit-fragment="4">These feel logical, do not require long procedures to combine separate queries</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-style="section {
-  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
-  background-repeat: no-repeat;
-  background-position: top 10px right 10px;
-  background-size: 70px auto;
-}
-.cite-text {
-  font-size: 0.5em;
-  color: #aaa;
-}
-section.node-edge-examples .example-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 42px;
-  align-items: start;
-  margin-top: 28px;
-}
-section.node-edge-examples figure {
-  margin: 0;
-  text-align: center;
-}
-section.node-edge-examples img {
-  width: 100%;
-  height: 390px;
-  object-fit: contain;
-}
-section.node-edge-examples figcaption {
-  margin-top: 14px;
-  font-size: 0.9em;
-}
-" lang="C" style="--style:section {
-  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
-  background-repeat: no-repeat;
-  background-position: top 10px right 10px;
-  background-size: 70px auto;
-}
-.cite-text {
-  font-size: 0.5em;
-  color: #aaa;
-}
-section.node-edge-examples .example-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 42px;
-  align-items: start;
-  margin-top: 28px;
-}
-section.node-edge-examples figure {
-  margin: 0;
-  text-align: center;
-}
-section.node-edge-examples img {
-  width: 100%;
-  height: 390px;
-  object-fit: contain;
-}
-section.node-edge-examples figcaption {
-  margin-top: 14px;
-  font-size: 0.9em;
-}
-;"></section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-style="section {
-  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
-  background-repeat: no-repeat;
-  background-position: top 10px right 10px;
-  background-size: 70px auto;
-}
-.cite-text {
-  font-size: 0.5em;
-  color: #aaa;
-}
-section.node-edge-examples .example-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 42px;
-  align-items: start;
-  margin-top: 28px;
-}
-section.node-edge-examples figure {
-  margin: 0;
-  text-align: center;
-}
-section.node-edge-examples img {
-  width: 100%;
-  height: 390px;
-  object-fit: contain;
-}
-section.node-edge-examples figcaption {
-  margin-top: 14px;
-  font-size: 0.9em;
-}
-" lang="C" style="--style:section {
-  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
-  background-repeat: no-repeat;
-  background-position: top 10px right 10px;
-  background-size: 70px auto;
-}
-.cite-text {
-  font-size: 0.5em;
-  color: #aaa;
-}
-section.node-edge-examples .example-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 42px;
-  align-items: start;
-  margin-top: 28px;
-}
-section.node-edge-examples figure {
-  margin: 0;
-  text-align: center;
-}
-section.node-edge-examples img {
-  width: 100%;
-  height: 390px;
-  object-fit: contain;
-}
-section.node-edge-examples figcaption {
-  margin-top: 14px;
-  font-size: 0.9em;
-}
-;"></section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
@@ -2059,7 +2065,129 @@ section.node-edge-examples figcaption {
   font-size: 0.9em;
 }
 ;"></section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-marpit-fragments="4" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-style="section {
+  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
+  background-repeat: no-repeat;
+  background-position: top 10px right 10px;
+  background-size: 70px auto;
+}
+.cite-text {
+  font-size: 0.5em;
+  color: #aaa;
+}
+section.node-edge-examples .example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+  align-items: start;
+  margin-top: 28px;
+}
+section.node-edge-examples figure {
+  margin: 0;
+  text-align: center;
+}
+section.node-edge-examples img {
+  width: 100%;
+  height: 390px;
+  object-fit: contain;
+}
+section.node-edge-examples figcaption {
+  margin-top: 14px;
+  font-size: 0.9em;
+}
+" lang="C" style="--style:section {
+  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
+  background-repeat: no-repeat;
+  background-position: top 10px right 10px;
+  background-size: 70px auto;
+}
+.cite-text {
+  font-size: 0.5em;
+  color: #aaa;
+}
+section.node-edge-examples .example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+  align-items: start;
+  margin-top: 28px;
+}
+section.node-edge-examples figure {
+  margin: 0;
+  text-align: center;
+}
+section.node-edge-examples img {
+  width: 100%;
+  height: 390px;
+  object-fit: contain;
+}
+section.node-edge-examples figcaption {
+  margin-top: 14px;
+  font-size: 0.9em;
+}
+;"></section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-style="section {
+  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
+  background-repeat: no-repeat;
+  background-position: top 10px right 10px;
+  background-size: 70px auto;
+}
+.cite-text {
+  font-size: 0.5em;
+  color: #aaa;
+}
+section.node-edge-examples .example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+  align-items: start;
+  margin-top: 28px;
+}
+section.node-edge-examples figure {
+  margin: 0;
+  text-align: center;
+}
+section.node-edge-examples img {
+  width: 100%;
+  height: 390px;
+  object-fit: contain;
+}
+section.node-edge-examples figcaption {
+  margin-top: 14px;
+  font-size: 0.9em;
+}
+" lang="C" style="--style:section {
+  background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
+  background-repeat: no-repeat;
+  background-position: top 10px right 10px;
+  background-size: 70px auto;
+}
+.cite-text {
+  font-size: 0.5em;
+  color: #aaa;
+}
+section.node-edge-examples .example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+  align-items: start;
+  margin-top: 28px;
+}
+section.node-edge-examples figure {
+  margin: 0;
+  text-align: center;
+}
+section.node-edge-examples img {
+  width: 100%;
+  height: 390px;
+  object-fit: contain;
+}
+section.node-edge-examples figcaption {
+  margin-top: 14px;
+  font-size: 0.9em;
+}
+;"></section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-marpit-fragments="4" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2129,7 +2257,7 @@ section.node-edge-examples figcaption {
 </ul>
 <p><img src="typesOfGraphsInBiology.png" alt="" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-marpit-fragments="3" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-marpit-fragments="3" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2197,7 +2325,7 @@ section.node-edge-examples figcaption {
 <li data-marpit-fragment="3">Formal schemas and constraints can be processed computationally.</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-marpit-fragments="3" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-marpit-fragments="3" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2258,7 +2386,7 @@ section.node-edge-examples figcaption {
   font-size: 0.9em;
 }
 ;">
-<h1 id="citations-and-provenance-are-key-for-relaible-research">Citations and provenance are key for relaible research</h1>
+<h1 id="citations-and-provenance-are-key-for-reliable-research">Citations and provenance are key for reliable research</h1>
 <ul>
 <li data-marpit-fragment="1">For data provenance (for example from the start, using BioCypher strict mode), standardization and graph libraries support citing data information</li>
 <li data-marpit-fragment="2">In Biology, your data's source and batch is critical for batch effects and comparability</li>
@@ -2266,7 +2394,7 @@ section.node-edge-examples figcaption {
 </ul>
 <p class="cite-text" data-marpit-fragment="5">McMillen, P., Novak, R., & Levin, M. (2020). Toward decoding bioelectric events in Xenopus embryogenesis: New methodology for tracking interplay between calcium and resting potentials in vivo. Journal of Molecular Biology, 432(2), 605–620.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-marpit-fragments="4" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-marpit-fragments="4" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2335,7 +2463,7 @@ section.node-edge-examples figcaption {
 <li data-marpit-fragment="4">This supports hypothesis generation and comparator discovery, but it does not increase the experimental sample size by itself.</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2396,7 +2524,7 @@ section.node-edge-examples figcaption {
   font-size: 0.9em;
 }
 ;"></section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-marpit-fragments="3" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-marpit-fragments="3" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2470,7 +2598,7 @@ section.node-edge-examples figcaption {
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2537,7 +2665,7 @@ section.node-edge-examples figcaption {
 (C) harmonizing your own data with an extensible Separation Of Concerns technical approach<br />
 (D) sharing your data in a reusable way with the wider scientific community to achieve faster overall progress in biology</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-marpit-fragments="3" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-marpit-fragments="3" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2606,7 +2734,7 @@ section.node-edge-examples figcaption {
 </ul>
 <p class="cite-text" data-marpit-fragment="5">Lobentanzer, S., Aloy, P., Baumbach, J., Bohar, B., Carey, V. J., Charoentong, P., et al. (2023). Democratizing knowledge representation with BioCypher. Nature Biotechnology, 41(8), 1056–1059.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-marpit-fragments="1" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-marpit-fragments="1" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2673,7 +2801,7 @@ section.node-edge-examples figcaption {
 </ul>
 <p><img src="labelingConfusion.jpeg" alt="" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-marpit-fragments="4" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-marpit-fragments="4" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2742,7 +2870,7 @@ section.node-edge-examples figcaption {
 <li data-marpit-fragment="4">We cover most Harmonization levels(Structural, Label, Semantic) on Wednesday</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-marpit-fragments="3" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-marpit-fragments="3" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2816,7 +2944,7 @@ section.node-edge-examples figcaption {
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-style="section {
   background-image: url('https://biocypher.org/BioCypher/assets/img/biocypher-open-graph.png');
   background-repeat: no-repeat;
   background-position: top 10px right 10px;
@@ -2881,20 +3009,20 @@ section.node-edge-examples figcaption {
 <ul>
 <li>Knowledge graphs help us make data with relationships navigable and queryable.</li>
 <li>Defining schemas for your ontology in BioCypher lets us enforce data consistency and establish data provenance. Schemas give you powerful insight into what queries you can make.</li>
-<li>Existing ontologies and your datasets can be harmozied with provenance via strict mode from the start.</li>
-<li>This supports richer queries, candidate discovery without needing to maintain complex, slow procedures</li>
+<li>Existing ontologies and your datasets can be harmonized with provenance via strict mode from the start.</li>
+<li>This supports richer queries and candidate discovery, without maintaining complex, slow query procedures.</li>
 <li>Now we understand the theory here, we will cover how these actually interact from a CSV to a public dataset.</li>
 </ul>
 </section>
 <script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{container;containerSize;containerObserver;svg;svgComputedStyle;svgPreserveAspectRatio="xMinYMid meet";wrapper;wrapperSize;wrapperObserver;constructor(){super();const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${e}]`)??void 0;const t=this.svg;this.svg=this.wrapper?.querySelector(`svg[${i}]`)??void 0,this.svg!==t&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${n}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame(()=>{t.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){let t=Math.ceil(this.containerSize?.width??0);const e=Math.ceil(this.containerSize?.height??0);void 0!==this.dataset.downscaleOnly&&(t=Math.max(t,this.wrapperSize?.width??0));const i=this.svg?.querySelector(":scope > foreignObject");if(i?.setAttribute("width",`${t}`),i?.setAttribute("height",`${e}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${t} ${e}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=t<=0||e<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const r=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(t){if(!(t instanceof Error&&"NotSupportedError"===t.name))throw t}return this.shadowRoot}_update(){const t=this._shadow();if(t){const e=i?`<style>:host { ${i} }</style>`:"";let n="<slot></slot>";const{autoScaling:s}=this.dataset;if(void 0!==s){n=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===s?"data-downscale-only":""}>${n}</marp-auto-scaling>`}t.innerHTML=e+n}}};let o;const a=Symbol(),l=()=>o??(o=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),o);let c;const d="marpitSVGPolyfill:setZoomFactor,",h=Symbol(),g=Symbol();const p=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[v]:[],i={then:e=>(t?(async()=>{if(void 0===c){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise(t=>{i.addEventListener("load",()=>t())});i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),c=e.getImageData(5,5,1,1).data[3]<128}return c})().then(t=>{null==e||e(t?[v]:[])}):null==e||e([]),i)};return Object.assign(e,i)};let m,u;function v(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[g]||(Object.defineProperty(window,g,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(d)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(u=i)}}catch(t){console.error(t)}}));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),t=>{var e,s,r,o;t.style.transform||(t.style.transform="translateZ(0)");const a=i||u||t.currentScale||1;m!==a&&(m=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(o=null===(r=n.y)||void 0===r?void 0:r.baseVal.value)&&void 0!==o?o:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}}),!1!==n&&Array.from(e.querySelectorAll("iframe"),({contentWindow:t})=>{null==t||t.postMessage(`${d}${n}`,"null"===window.origin?"*":window.origin)})}function w({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[h])return t[h];let e=!0;const i=()=>{e=!1,delete t[h]};Object.defineProperty(t,h,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await p()}finally{s=!0}})();const r=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(r)};return r(),i}(e);return t?(i(),()=>{}):i}m=1,u=void 0;const b=Symbol(),y=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[a];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,o=t[n].proto();l()&&o!==HTMLElement?i||customElements.define(s,r(o,{style:t[n].style}),{extends:n}):(i||customElements.define(s,r(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach(t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)}))}window[a]=!0})(e),e[b])return e[b];const i=w({target:e}),n=()=>{i(),delete e[b]},o=Object.assign(n,{cleanup:n,update:()=>y(e)});return Object.defineProperty(e,b,{configurable:!0,value:o}),o},f=document.currentScript;y(f?f.getRootNode():document)}();
 </script></foreignObject></svg></div><div class="bespoke-marp-note" data-index="0" tabindex="0"><p>ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not?</p></div><div class="bespoke-marp-note" data-index="2" tabindex="0"><p>(discuss uncertainly/clear statemnets, entails, containers, has, can)</p></div><div class="bespoke-marp-note" data-index="4" tabindex="0"><p>first connection level in the path is &quot;0&quot;, that's why you see [0..*] notation 
-any number of combinations is possible</p></div><div class="bespoke-marp-note" data-index="13" tabindex="0"><p>they prvoide a concise definition of the biological concepts and links between them in the dataset. The graph sturcture is usually tailored to your research question too</p></div><div class="bespoke-marp-note" data-index="18" tabindex="0"><p>hopefully somebody finds something to dislike, and then we can say: the point is a difference frame of viewing - agreeing ahead of time</p><p>experimental whether to say that, need to check on Sunday; I don't want to frame that Biolink relationships are irrelevant from some views which clashes with the point above</p><p>the fact participants will have slightly different models of how object entities/definitions and relationships are defined will not be that revealed</p><p>they may confuse that this example of a general ontology shows something you may change, with it being a Biolink &quot;gold example&quot;</p></div><div class="bespoke-marp-note" data-index="25" tabindex="0"><p>ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not?</p><p># We all use relationships to inform research inquiry - Medical study example
+any number of combinations is possible</p></div><div class="bespoke-marp-note" data-index="7" tabindex="0"><p>&quot;Extrapolating&quot; as a note</p></div><div class="bespoke-marp-note" data-index="15" tabindex="0"><p>they provide a concise definition of the biological concepts and links between them in the dataset. The graph structure is usually tailored to your research question too</p></div><div class="bespoke-marp-note" data-index="20" tabindex="0"><p>hopefully somebody finds something to dislike, and then we can say: the point is a difference frame of viewing - agreeing ahead of time</p><p>experimental whether to say that, need to check on Sunday; I don't want to frame that Biolink relationships are irrelevant from some views which clashes with the point above</p><p>the fact participants will have slightly different models of how object entities/definitions and relationships are defined will not be that revealed</p><p>they may confuse that this example of a general ontology shows something you may change, with it being a Biolink &quot;gold example&quot;</p></div><div class="bespoke-marp-note" data-index="27" tabindex="0"><p>ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not?</p><p># We all use relationships to inform research inquiry - Medical study example
 
 IVF is extremely difficult and can be unpredictable for women to undertake, as each treatment round is uncertain. Additionally, treatment response rates are not uniform for IVF.
 
 * We understand some genetic elements behind IVF response.
 * We understand a lesser proportion behind POI, Primary Ovarian Insufficiency.
-* For IVF patients, we measure follicle response during treatment.</p></div><div class="bespoke-marp-note" data-index="26" tabindex="0"><p># Medical study example part two
+* For IVF patients, we measure follicle response during treatment.</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p># Medical study example part two
 
 * FSH is follicle-stimulating hormone.
 * FSH stimulates follicle development through FSHR.
@@ -2903,18 +3031,18 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 * Those receptor and pathway differences may affect biological functions such as ovarian follicle development and treatment response.
 * The point is the chain of events: hormone signal, receptor response, pathway activity, follicle response.
 
-&lt;p class=&quot;cite-text&quot; data-marpit-fragment=&quot;5&quot;&gt;Loutradis, D., Patsoula, E., Minas, V., Koussidis, G. A., Antsaklis, A., Michalas, S., &amp; Makrigiannakis, A. (2006). FSH receptor gene polymorphisms have a role for different ovarian response to stimulation in patients entering IVF/ICSI-ET programs. Journal of Assisted Reproduction and Genetics, 23(4), 177–184.&lt;/p&gt;</p></div><div class="bespoke-marp-note" data-index="27" tabindex="0"><p># Theoretical study
+&lt;p class=&quot;cite-text&quot; data-marpit-fragment=&quot;5&quot;&gt;Loutradis, D., Patsoula, E., Minas, V., Koussidis, G. A., Antsaklis, A., Michalas, S., &amp; Makrigiannakis, A. (2006). FSH receptor gene polymorphisms have a role for different ovarian response to stimulation in patients entering IVF/ICSI-ET programs. Journal of Assisted Reproduction and Genetics, 23(4), 177–184.&lt;/p&gt;</p></div><div class="bespoke-marp-note" data-index="29" tabindex="0"><p># Theoretical study
 
 **Theoretical study: Can we use known FSH and pathway relationships to explore overlap between POI biology and IVF follicle response?**
 
 * This is a graph-based research question.
 * It does not mean POI and IVF response are the same.
 * It means we can query shared hormones, receptors, genes, pathways, and phenotypes.
-* We can use the graph to find candidates for further investigation.</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p># The power of that is querying across a massive range of interconnected entities:
+* We can use the graph to find candidates for further investigation.</p></div><div class="bespoke-marp-note" data-index="30" tabindex="0"><p># The power of that is querying across a massive range of interconnected entities:
 
 * The fact that POI, Primary Ovarian Insufficiency, is conceptually linked to IVF enables us to explore this research direction, and in this case can be identified as a research question manually.
 * But in some cases, we have many different partially related concepts: different amino acids, thousands of genes, and different ways of categorising disease.
-* Knowledge graphs can help us identify and filter the *most promising candidates* at scales of relationship traversal we could never achieve ourselves by hand.</p></div><div class="bespoke-marp-note" data-index="33" tabindex="0"><p>ML related, so removed:
+* Knowledge graphs can help us identify and filter the *most promising candidates* at scales of relationship traversal we could never achieve ourselves by hand.</p></div><div class="bespoke-marp-note" data-index="35" tabindex="0"><p>ML related, so removed:
 # Example 1: Query the Knowledge Base for candidates to investigate:
 
 * Which ion channels or gap-junction proteins are connected to certain phenotypes,
@@ -2952,7 +3080,7 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 
 * **For prediction**, when a subtype has few direct cases, the graph can help identify related diagnoses, phenotypes, laboratory findings, or clinical relationships.
 * Example feature: `count_of_related_negative_case_patterns`
-* This is prior context for the model, not automatic extra sample size.</p></div><div class="bespoke-marp-note" data-index="38" tabindex="0"><p>when integrating data = conceptually when defining the schema</p></div><div class="bespoke-marp-note" data-index="39" tabindex="0"><p>also removed because we will wait until Edwins Tuesday session to cover adapters
+* This is prior context for the model, not automatic extra sample size.</p></div><div class="bespoke-marp-note" data-index="40" tabindex="0"><p>when integrating data = conceptually when defining the schema</p></div><div class="bespoke-marp-note" data-index="41" tabindex="0"><p>also removed because we will wait until Edwins Tuesday session to cover adapters
 ---
 
 # Quick topic: Adapters
@@ -2967,5 +3095,5 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 
 * This allows you to ask richer biological questions immediately, without manually rebuilding all known relationships yourself.
 * It provides a model of how relationships are often defined in this area of biology.
-* It lets your dataset link to useful context from established biological resources, such as tissue expression, protein function, disease links, and compound targeting.</p></div><div class="bespoke-marp-note" data-index="40" tabindex="0"><p>maybe don't cover: batch effects and why extended datasets that analyzed the same data you have(e.g. but 10x more) cannot simply contribute to your data samples, even if you use exactly the same Ontology (e.g. BioLink</p><p>all icons from https://bioart.niaid.nih.gov/ BIOART</p></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@4.4.0/lib/bespoke.js.LICENSE.txt */
+* It lets your dataset link to useful context from established biological resources, such as tissue expression, protein function, disease links, and compound targeting.</p></div><div class="bespoke-marp-note" data-index="42" tabindex="0"><p>maybe don't cover: batch effects and why extended datasets that analyzed the same data you have(e.g. but 10x more) cannot simply contribute to your data samples, even if you use exactly the same Ontology (e.g. BioLink</p><p>all icons from https://bioart.niaid.nih.gov/ BIOART</p></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@4.4.0/lib/bespoke.js.LICENSE.txt */
 !function(){"use strict";function e(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}var t,n,r=(n||(n=1,t={from:function(e,t){var n,r=1===(e.parent||e).nodeType?e.parent||e:document.querySelector(e.parent||e),o=[].filter.call("string"==typeof e.slides?r.querySelectorAll(e.slides):e.slides||r.children,function(e){return"SCRIPT"!==e.nodeName}),i={},a=function(e,t){return(t=t||{}).index=o.indexOf(e),t.slide=e,t},s=function(e,t){i[e]=(i[e]||[]).filter(function(e){return e!==t})},l=function(e,t){return(i[e]||[]).reduce(function(e,n){return e&&!1!==n(t)},!0)},c=function(e,t){o[e]&&(n&&l("deactivate",a(n,t)),n=o[e],l("activate",a(n,t)))},d=function(e,t){var r=o.indexOf(n)+e;l(e>0?"next":"prev",a(n,t))&&c(r,t)},u={off:s,on:function(e,t){return(i[e]||(i[e]=[])).push(t),s.bind(null,e,t)},fire:l,slide:function(e,t){if(!arguments.length)return o.indexOf(n);l("slide",a(o[e],t))&&c(e,t)},next:d.bind(null,1),prev:d.bind(null,-1),parent:r,slides:o,destroy:function(e){l("destroy",a(n,e)),i={}}};return(t||[]).forEach(function(e){e(u)}),n||c(0),u}}),t),o=e(r);const i=document.body,a=(...e)=>history.replaceState(...e),s="",l="presenter",c="next",d="overview",u=["",l,d,c],f="bespoke-marp-",m=`data-${f}`,g=(e,{protocol:t,host:n,pathname:r,hash:o}=location)=>{const i=e.toString();return`${t}//${n}${r}${i?"?":""}${i}${o}`},p=()=>i.dataset.bespokeView,v=e=>new URLSearchParams(location.search).get(e),h=(e,t={})=>{const n={location,setter:a,...t},r=new URLSearchParams(n.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?r.set(t,n):r.delete(t)}try{n.setter({...window.history.state??{}},"",g(r,n.location))}catch(e){console.error(e)}},w=(()=>{const e="bespoke-marp";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch{return!1}})(),y=e=>{try{return localStorage.getItem(e)}catch{return null}},b=(e,t)=>{try{return localStorage.setItem(e,t),!0}catch{return!1}},k=e=>{try{return localStorage.removeItem(e),!0}catch{return!1}},x=(e,t)=>{const n="aria-hidden";t?e.setAttribute(n,"true"):e.removeAttribute(n)},E=e=>{e.parent.classList.add(`${f}parent`),e.slides.forEach(e=>e.classList.add(`${f}slide`)),e.on("activate",t=>{const n=`${f}active`,r=t.slide,o=r.classList,i=!o.contains(n);if(e.slides.forEach(e=>{e.classList.remove(n),x(e,!0)}),o.add(n),x(r,!1),i){const e=`${n}-ready`;o.add(e),document.body.clientHeight,o.remove(e)}})},$=e=>{let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map(e=>[null,...e.querySelectorAll("[data-marpit-fragment]")])});const r=r=>void 0!==e.fragments[t][n+r],o=(r,o)=>{t=r,n=o,e.fragments.forEach((e,t)=>{e.forEach((e,n)=>{if(null==e)return;const i=t<r||t===r&&n<=o;e.setAttribute(`${m}fragment`,(i?"":"in")+"active");const a=`${m}current-fragment`;t===r&&n===o?e.setAttribute(a,"current"):e.removeAttribute(a)})}),e.fragmentIndex=o;const i={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:o};e.fire("fragment",i)};e.on("next",({fragment:i=!0})=>{if(i){if(r(1))return o(t,n+1),!1;const i=t+1;e.fragments[i]&&o(i,0)}else{const r=e.fragments[t].length;if(n+1<r)return o(t,r-1),!1;const i=e.fragments[t+1];i&&o(t+1,i.length-1)}}),e.on("prev",({fragment:i=!0})=>{if(r(-1)&&i)return o(t,n-1),!1;const a=t-1;e.fragments[a]&&o(a,e.fragments[a].length-1)}),e.on("slide",({index:t,fragment:n})=>{let r=0;if(void 0!==n){const o=e.fragments[t];if(o){const{length:e}=o;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}o(t,r)}),o(0,0)},L=document,S=()=>!(!L.fullscreenEnabled&&!L.webkitFullscreenEnabled),P=()=>!(!L.fullscreenElement&&!L.webkitFullscreenElement),_=e=>{e.fullscreen=()=>{S()&&(async()=>{P()?(L.exitFullscreen||L.webkitExitFullscreen)?.call(L):((e=L.body)=>{(e.requestFullscreen||e.webkitRequestFullscreen)?.call(e)})()})()},document.addEventListener("keydown",t=>{"f"!==t.key&&"F11"!==t.key||t.altKey||t.ctrlKey||t.metaKey||!S()||(e.fullscreen(),t.preventDefault())})},O=`${f}inactive`,T=(e=2e3)=>({parent:t,fire:n})=>{const r=t.classList,o=e=>n(`marp-${e?"":"in"}active`);let i;const a=()=>{i&&clearTimeout(i),i=setTimeout(()=>{r.add(O),o()},e),r.contains(O)&&(r.remove(O),o(!0))};for(const e of["mousedown","mousemove","touchend"])document.addEventListener(e,a);setTimeout(a,0)},I=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"],M=e=>{e.parent.addEventListener("keydown",e=>{if(!e.target)return;const t=e.target;(I.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()})},A=e=>{window.addEventListener("load",()=>{for(const t of e.slides){const e=t.querySelector("marp-auto-scaling, [data-auto-scaling], [data-marp-fitting]");t.setAttribute(`${m}load`,e?"":"hideable")}})},C=({interval:e=250}={})=>t=>{document.addEventListener("keydown",e=>{if(" "===e.key&&e.shiftKey)t.prev();else if("ArrowLeft"===e.key||"ArrowUp"===e.key||"PageUp"===e.key)t.prev({fragment:!e.shiftKey});else if(" "!==e.key||e.shiftKey)if("ArrowRight"===e.key||"ArrowDown"===e.key||"PageDown"===e.key)t.next({fragment:!e.shiftKey});else if("End"===e.key)t.slide(t.slides.length-1,{fragment:-1});else{if("Home"!==e.key)return;t.slide(0)}else t.next();e.preventDefault()});let n,r,o=0;t.parent.addEventListener("wheel",i=>{let a=!1;const s=(e,t)=>{e&&(a=a||((e,t)=>((e,t)=>{const n="X"===t?"Width":"Height";return e[`client${n}`]<e[`scroll${n}`]})(e,t)&&((e,t)=>{const{overflow:n}=e,r=e[`overflow${t}`];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r})(getComputedStyle(e),t))(e,t)),e?.parentElement&&s(e.parentElement,t)};if(0!==i.deltaX&&s(i.target,"X"),0!==i.deltaY&&s(i.target,"Y"),a)return;i.preventDefault();const l=Math.sqrt(i.deltaX**2+i.deltaY**2);if(void 0!==i.wheelDelta){if(void 0===i.webkitForce&&Math.abs(i.wheelDelta)<40)return;if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<4)return}else if(i.deltaMode===i.DOM_DELTA_PIXEL&&l<12)return;r&&clearTimeout(r),r=setTimeout(()=>{n=0},e);const c=Date.now()-o<e,d=l<=n;if(n=l,c||d)return;let u;(i.deltaX>0||i.deltaY>0)&&(u="next"),(i.deltaX<0||i.deltaY<0)&&(u="prev"),u&&(t[u](),o=Date.now())})},D=(e=`.${f}osc`)=>{const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[${m}osc=${JSON.stringify(e)}]`).forEach(n)};if(S()||n("fullscreen",e=>e.style.display="none"),!w){const e=(e,t)=>{e.disabled=!0,e.title=`${t} is disabled due to restricted localStorage.`};n("presenter",t=>e(t,"Presenter view")),n("overview",t=>e(t,"Overview view"))}return e=>{t.addEventListener("click",t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;n&&t.target.blur();const r={fragment:!t.shiftKey};"next"===n?e.next(r):"prev"===n?e.prev(r):"fullscreen"===n?e?.fullscreen():"presenter"===n?e.openPresenterView():"overview"===n&&e.toggleOverviewView()}}),e.parent.appendChild(t),e.on("activate",({index:t})=>{n("page",n=>n.textContent=`Page ${t+1} of ${e.slides.length}`)}),e.on("fragment",({index:t,fragments:r,fragmentIndex:o})=>{n("prev",e=>e.disabled=0===t&&0===o),n("next",n=>n.disabled=t===e.slides.length-1&&o===r.length-1)}),e.on("marp-active",()=>x(t,!1)),e.on("marp-inactive",()=>x(t,!0)),S()&&(e=>{for(const t of["","webkit"])L.addEventListener(t+"fullscreenchange",e)})(()=>n("fullscreen",e=>e.classList.toggle("exit",S()&&P())))}},N=e=>{if(e.syncKey&&"string"==typeof e.syncKey)return!0;throw new Error("The current instance of Bespoke.js is incompatible with Marp bespoke sync plugin.")},B=(e={})=>{const t=e.key||window.history.state?.marpBespokeSyncKey||Math.random().toString(36).slice(2),n=`bespoke-marp-sync-${t}`;var r;r={marpBespokeSyncKey:t},h({},{setter:(e,...t)=>a({...e,...r},...t)});const o=()=>{const e=y(n);return e?JSON.parse(e):Object.create(null)},i=e=>{const t=o(),r={...t,...e(t)};return b(n,JSON.stringify(r)),r},s=()=>{window.removeEventListener("pageshow",s),i(e=>({reference:(e.reference||0)+1}))};return e=>{s(),Object.defineProperty(e,"syncKey",{value:t,enumerable:!0});let r=!0;setTimeout(()=>{e.on("fragment",e=>{r&&i(()=>({index:e.index,fragmentIndex:e.fragmentIndex}))})},0),window.addEventListener("storage",t=>{if(t.key===n&&t.oldValue&&t.newValue){const n=JSON.parse(t.oldValue),o=JSON.parse(t.newValue);if(n.index!==o.index||n.fragmentIndex!==o.fragmentIndex)try{r=!1,e.slide(o.index,{fragment:o.fragmentIndex,forSync:!0})}finally{r=!0}}});const a=()=>{const{reference:e}=o();void 0===e||e<=1?k(n):i(()=>({reference:e-1}))};window.addEventListener("pagehide",e=>{e.persisted&&window.addEventListener("pageshow",s),a()}),e.on("destroy",a)}},K=e=>{w&&document.addEventListener("keydown",t=>{("o"!==t.key||t.altKey||t.ctrlKey||t.metaKey)&&"Escape"!==t.key||(t.preventDefault(),e())})};let q=null;const V=({closeOnSelect:e=!0}={})=>t=>{N(t);const n=n=>{const r=(()=>{if(!q||!q.isConnected){q=document.createElement("div"),q.className=`${f}overview`,q.inert=!0;const n=document.createElement("iframe");n.src=(()=>{const n=new URLSearchParams(location.search);return n.set("view","overview"),n.set("sync",t.syncKey),e&&n.set("closeOnSelect","1"),g(n)})(),q.append(n),document.body.append(q)}return q})(),o=n??!r.dataset.open;setTimeout(()=>{if(r.dataset.open=o?"1":"",r.inert=!o,t.skipTransition=o,o){const e=r.querySelector("iframe");try{e?.contentWindow?.focus()}catch{e?.focus()}}else window.focus()},0)};Object.defineProperties(t,{toggleOverviewView:{enumerable:!0,value:n}}),window.addEventListener("message",e=>{e.origin===window.origin&&"closeOverview"===e.data&&n(!1)}),K(n)},j=e=>{const{title:t}=document;document.title="[Overview]"+(t?` - ${t}`:"");const n=!!v("closeOnSelect"),r=()=>{window.parent.postMessage("closeOverview","null"===window.origin?"*":window.origin)};if(e.slides.forEach((t,o)=>{t.tabIndex=0;const i=()=>{e.slide(o,{fragment:-1}),n&&r()};t.addEventListener("click",i),t.addEventListener("keydown",e=>{"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),i())})}),window.addEventListener("keydown",t=>{const n=e.slide(),r=t=>{const r=t=>{const n=e.slides[t].getBoundingClientRect();return[Math.round((n.left+n.right)/2),Math.round((n.top+n.bottom)/2)]};let o=null,i=n;do{const e=r(i);if(o){if(Math.abs(e[0]-o[0])<2)return i}else o=e;i+=t}while(i>=0&&i<e.slides.length);return n};if("ArrowLeft"===t.key)e.slide(Math.max(n-1,0),{fragment:-1});else if("ArrowRight"===t.key)e.slide(Math.min(n+1,e.slides.length-1),{fragment:-1});else if("ArrowUp"===t.key)e.slide(r(-1),{fragment:-1});else if("ArrowDown"===t.key)e.slide(r(1),{fragment:-1});else if("End"===t.key)e.slide(e.slides.length-1,{fragment:-1});else{if("Home"!==t.key)return;e.slide(0,{fragment:-1})}t.preventDefault();const o=e.slide();e.slides[o]?.focus?.(),e.slides[o]?.scrollIntoView?.({behavior:"smooth",block:"nearest"})}),e.on("slide",({index:t})=>{e.slides[t]?.scrollIntoView?.({behavior:"smooth",block:"nearest"})}),window.parent!==window){K(r);const e=document.createElement("header");e.className=`${f}overview-header`;const t=document.createElement("button");t.className=`${f}overview-close`,t.type="button",t.title="Close overview",t.textContent=t.title,t.addEventListener("click",r),e.append(t),document.body.prepend(e)}},F=()=>{const e=p();return{[s]:V(),[l]:V({closeOnSelect:!1}),[d]:j}[e]},U=e=>{window.addEventListener("message",t=>{if(t.origin!==window.origin)return;const[n,r]=t.data.split(":");if("navigate"===n){const[t,n]=r.split(",");let o=Number.parseInt(t,10),i=Number.parseInt(n,10)+1;i>=e.fragments[o].length&&(o+=1,i=0),e.slide(o,{fragment:i})}})};var R,X,H,W,J,Y,z,G={exports:{}},Q=(R||(R=1,G.exports=(X=["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"],H=function(e){return String(e).replace(/[&<>"']/g,function(e){return"&"+W[e]+";"})},W={"&":"amp","<":"lt",">":"gt",'"':"quot","'":"apos"},J="dangerouslySetInnerHTML",Y={className:"class",htmlFor:"for"},z={},function(e,t){var n=[],r="";t=t||{};for(var o=arguments.length;o-- >2;)n.push(arguments[o]);if("function"==typeof e)return t.children=n.reverse(),e(t);if(e){if(r+="<"+e,t)for(var i in t)!1!==t[i]&&null!=t[i]&&i!==J&&(r+=" "+(Y[i]?Y[i]:H(i))+'="'+H(t[i])+'"');r+=">"}if(-1===X.indexOf(e)){if(t[J])r+=t[J].__html;else for(;n.length;){var a=n.pop();if(a)if(a.pop)for(var s=a.length;s--;)n.push(a[s]);else r+=!0===z[a]?a:H(a)}r+=e?"</"+e+">":""}return z[r]=!0,r})),G.exports),Z=e(Q);const ee=({children:e})=>Z(null,null,...e),te=`${f}presenter-`,ne={container:`${te}container`,dragbar:`${te}dragbar-container`,next:`${te}next`,nextContainer:`${te}next-container`,noteContainer:`${te}note-container`,noteWrapper:`${te}note-wrapper`,noteButtons:`${te}note-buttons`,infoContainer:`${te}info-container`,infoPageArea:`${te}info-page-area`,infoPage:`${te}info-page`,infoPagePrev:`${te}info-page-prev`,infoPageNext:`${te}info-page-next`,noteButtonsBigger:`${te}note-bigger`,noteButtonsSmaller:`${te}note-smaller`,infoTime:`${te}info-time`,infoTimer:`${te}info-timer`},re=e=>{const{title:t}=document;document.title="[Presenter view]"+(t?` - ${t}`:"");const n={},r=e=>(n[e]=n[e]||document.querySelector(`.${e}`),n[e]);document.body.appendChild((e=>{const t=document.createElement("div");return t.className=ne.container,t.appendChild(e),t.insertAdjacentHTML("beforeend",Z(ee,null,Z("div",{class:ne.nextContainer},Z("iframe",{class:ne.next,src:"?view=next"})),Z("div",{class:ne.dragbar}),Z("div",{class:ne.noteContainer},Z("div",{class:ne.noteWrapper}),Z("div",{class:ne.noteButtons},Z("button",{class:ne.noteButtonsSmaller,tabindex:"-1",title:"Smaller notes font size"},"Smaller notes font size"),Z("button",{class:ne.noteButtonsBigger,tabindex:"-1",title:"Bigger notes font size"},"Bigger notes font size"))),Z("div",{class:ne.infoContainer},Z("div",{class:ne.infoPageArea},Z("button",{class:ne.infoPagePrev,tabindex:"-1",title:"Previous"},"Previous"),Z("button",{class:ne.infoPage}),Z("button",{class:ne.infoPageNext,tabindex:"-1",title:"Next"},"Next")),Z("time",{class:ne.infoTime,title:"Current time"}),Z("time",{class:ne.infoTimer,title:"Timer"})))),t})(e.parent)),(e=>{let t=!1;r(ne.dragbar).addEventListener("mousedown",()=>{t=!0,r(ne.dragbar).classList.add("active")}),window.addEventListener("mouseup",()=>{t=!1,r(ne.dragbar).classList.remove("active")}),window.addEventListener("mousemove",e=>{if(!t)return;const n=e.clientX/document.documentElement.clientWidth*100;r(ne.container).style.setProperty("--bespoke-marp-presenter-split-ratio",`${Math.max(0,Math.min(100,n))}%`)}),r(ne.nextContainer).addEventListener("click",()=>e.next());const n=r(ne.next),o=(i=n,(e,t)=>i.contentWindow?.postMessage(`navigate:${e},${t}`,"null"===window.origin?"*":window.origin));var i;n.addEventListener("load",()=>{r(ne.nextContainer).classList.add("active"),o(e.slide(),e.fragmentIndex),e.on("fragment",({index:e,fragmentIndex:t})=>o(e,t))});const a=document.querySelectorAll(".bespoke-marp-note");a.forEach(e=>{e.addEventListener("keydown",e=>e.stopPropagation()),r(ne.noteWrapper).appendChild(e)}),e.on("activate",()=>a.forEach(t=>t.classList.toggle("active",t.dataset.index==e.slide())));let s=0;const l=e=>{s=Math.max(-5,s+e),r(ne.noteContainer).style.setProperty("--bespoke-marp-note-font-scale",(1.2**s).toFixed(4))},c=()=>l(1),d=()=>l(-1),u=r(ne.noteButtonsBigger),f=r(ne.noteButtonsSmaller);u.addEventListener("click",()=>{u.blur(),c()}),f.addEventListener("click",()=>{f.blur(),d()}),document.addEventListener("keydown",e=>{"+"===e.key&&c(),"-"===e.key&&d()},!0);const m=r(ne.infoPage);e.on("activate",({index:t})=>{m.textContent=`${t+1} / ${e.slides.length}`}),m.addEventListener("click",()=>{m.blur(),e.toggleOverviewView()});const g=r(ne.infoPagePrev),p=r(ne.infoPageNext);g.addEventListener("click",t=>{g.blur(),e.prev({fragment:!t.shiftKey})}),p.addEventListener("click",t=>{p.blur(),e.next({fragment:!t.shiftKey})}),e.on("fragment",({index:t,fragments:n,fragmentIndex:r})=>{g.disabled=0===t&&0===r,p.disabled=t===e.slides.length-1&&r===n.length-1});let v=new Date;const h=()=>{const e=new Date,t=e=>`${Math.floor(e)}`.padStart(2,"0"),n=e.getTime()-v.getTime(),o=t(n/1e3%60),i=t(n/1e3/60%60),a=t(n/36e5%24);r(ne.infoTime).textContent=e.toLocaleTimeString(),r(ne.infoTimer).textContent=`${a}:${i}:${o}`};h(),setInterval(h,250),r(ne.infoTimer).addEventListener("click",()=>{v=new Date})})(e)},oe=e=>{N(e),Object.defineProperties(e,{openPresenterView:{enumerable:!0,value:ie},presenterUrl:{enumerable:!0,get:ae}}),w&&document.addEventListener("keydown",t=>{"p"!==t.key||t.altKey||t.ctrlKey||t.metaKey||(t.preventDefault(),e.openPresenterView())})};function ie(){const{max:e,floor:t}=Math,n=e(t(.85*window.innerWidth),640),r=e(t(.85*window.innerHeight),360);return window.open(this.presenterUrl,te+this.syncKey,`width=${n},height=${r},menubar=no,toolbar=no`)}function ae(){const e=new URLSearchParams(location.search);return e.set("view","presenter"),e.set("sync",this.syncKey),g(e)}const se=e=>{const t=p();return t===c&&e.appendChild(document.createElement("span")),{[s]:oe,[l]:re,[c]:U}[t]},le=e=>{e.on("activate",t=>{document.querySelectorAll(".bespoke-progress-parent > .bespoke-progress-bar").forEach(n=>{n.style.flexBasis=100*t.index/(e.slides.length-1)+"%"})})},ce=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t},de=(e={})=>{const t={history:!0,...e};return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},o=(t={fragment:!0})=>{let n=t.fragment?ce(v("f")||""):null;((t,n)=>{const{min:r,max:o}=Math,{fragments:i,slides:a}=e,s=o(0,r(t,a.length-1)),l=o(0,r(n||0,i[s].length-1));s===e.slide()&&l===e.fragmentIndex||e.slide(s,{fragment:l})})((()=>{if(location.hash){const[t]=location.hash.slice(1).split(":~:");if(/^\d+$/.test(t))return(ce(t)??1)-1;const r=document.getElementById(t)||document.querySelector(`a[name="${CSS.escape(t)}"]`);if(r){const{length:t}=e.slides;for(let o=0;o<t;o+=1)if(e.slides[o].contains(r)){const t=e.fragments?.[o],i=r.closest("[data-marpit-fragment]");if(t&&i){const e=t.indexOf(i);e>=0&&(n=e)}return o}}}return 0})(),n)};e.on("fragment",({index:e,fragmentIndex:r})=>{n||h({f:0===r||r.toString()},{location:{...location,hash:`#${e+1}`},setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})}),setTimeout(()=>{o(),window.addEventListener("hashchange",()=>r(()=>{o({fragment:!1}),h({f:void 0})})),window.addEventListener("popstate",()=>{n||r(()=>o())}),n=!1},0)}},{PI:ue,abs:fe,sqrt:me,atan2:ge}=Math,pe={passive:!0},ve=({slope:e=-.7,swipeThreshold:t=30}={})=>n=>{let r;const o=n.parent,i=e=>{const t=o.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};o.addEventListener("touchstart",({touches:e})=>{r=1===e.length?i(e[0]):void 0},pe),o.addEventListener("touchmove",e=>{if(r)if(1===e.touches.length){e.preventDefault();const t=i(e.touches[0]),n=t.x-r.x,o=t.y-r.y;r.delta=me(fe(n)**2+fe(o)**2),r.radian=ge(n,o)}else r=void 0}),o.addEventListener("touchend",o=>{if(r){if(r.delta&&r.delta>=t&&r.radian){const t=(r.radian-e+ue)%(2*ue)-ue;n[t<0?"next":"prev"](),o.stopPropagation()}r=void 0}},pe)},he=new Map;he.clear(),he.set("none",{backward:{both:void 0,incoming:void 0,outgoing:void 0},forward:{both:void 0,incoming:void 0,outgoing:void 0}});const we={both:"",outgoing:"outgoing-",incoming:"incoming-"},ye={forward:"",backward:"-backward"},be=e=>`--marp-bespoke-transition-animation-${e}`,ke=e=>`--marp-transition-${e}`,xe=be("name"),Ee=be("duration"),$e=e=>new Promise(t=>{const n={},r=document.createElement("div"),o=e=>{r.remove(),t(e)};r.addEventListener("animationstart",()=>o(n)),Object.assign(r.style,{animationName:e,animationDuration:"1s",animationFillMode:"both",animationPlayState:"paused",position:"absolute",pointerEvents:"none"}),document.body.appendChild(r);const i=getComputedStyle(r).getPropertyValue(ke("duration"));i&&Number.parseFloat(i)>=0&&(n.defaultDuration=i),((e,t)=>{requestAnimationFrame(()=>{e.style.animationPlayState="running",requestAnimationFrame(()=>t(void 0))})})(r,o)}),Le=async e=>he.has(e)?he.get(e):(e=>{const t={},n=[];for(const[r,o]of Object.entries(we))for(const[i,a]of Object.entries(ye)){const s=`marp-${o}transition${a}-${e}`;n.push($e(s).then(e=>{t[i]=t[i]||{},t[i][r]=e?{...e,name:s}:void 0}))}return Promise.all(n).then(()=>t)})(e).then(t=>(he.set(e,t),t)),Se=e=>Object.values(e).flatMap(Object.values).every(e=>!e),Pe=(e,{type:t,backward:n})=>{const r=e[n?"backward":"forward"],o=(()=>{const e=r[t],n=e=>({[xe]:e.name});if(e)return n(e);if(r.both){const e=n(r.both);return"incoming"===t&&(e[be("direction")]="reverse"),e}})();return!o&&n?Pe(e,{type:t,backward:!1}):o||{[xe]:"__bespoke_marp_transition_no_animation__"}},_e=e=>{if(e)try{const t=JSON.parse(e);if((e=>{if("object"!=typeof e)return!1;const t=e;return"string"==typeof t.name&&(void 0===t.duration||"string"==typeof t.duration)})(t))return t}catch{}},Oe="_tSId",Te="_tA",Ie="bespoke-marp-transition-warming-up",Me=window.matchMedia("(prefers-reduced-motion: reduce)"),Ae="__bespoke_marp_transition_reduced_outgoing__",Ce="__bespoke_marp_transition_reduced_incoming__",De={forward:{both:void 0,incoming:{name:Ce},outgoing:{name:Ae}},backward:{both:void 0,incoming:{name:Ce},outgoing:{name:Ae}}},Ne=e=>{if(!document.startViewTransition)return;const t=t=>(void 0!==t&&(e._tD=t),e._tD);let n;t(!1),((...e)=>{CSS.registerProperty({name:ke("duration"),syntax:"<time>",inherits:!0,initialValue:"-1s"});const t=[...new Set(e).values()];return Promise.all(t.map(e=>Le(e))).then()})(...Array.from(document.querySelectorAll("section[data-transition], section[data-transition-back]")).flatMap(e=>[e.dataset.transition,e.dataset.transitionBack].flatMap(e=>{const t=_e(e);return[t?.name,t?.builtinFallback?`__builtin__${t.name}`:void 0]}).filter(e=>!!e))).then(()=>{document.querySelectorAll("style").forEach(e=>{e.innerHTML=e.innerHTML.replace(/--marp-transition-duration:[^;}]*[;}]/g,e=>e.slice(0,-1)+"!important"+e.slice(-1))})});const r=(n,{back:r,cond:o})=>i=>{const a=t();if(a)return!!i[Te]||!("object"!=typeof a||(a.skipTransition(),!i.forSync));if(e.skipTransition)return!0;if(!o(i))return!0;const s=e.slides[e.slide()],l=()=>i.back??r,c="data-transition"+(l()?"-back":""),d=s.querySelector(`section[${c}]`);if(!d)return!0;const u=_e(d.getAttribute(c)??void 0);return!u||((async(e,{builtinFallback:t=!0}={})=>{let n=await Le(e);if(Se(n)){if(!t)return;return n=await Le(`__builtin__${e}`),Se(n)?void 0:n}return n})(u.name,{builtinFallback:u.builtinFallback}).then(e=>{if(!e){t(!0);try{n(i)}finally{t(!1)}return}let r=e;Me.matches&&(console.warn("Use a constant animation to transition because preferring reduced motion by viewer has detected."),r=De);const o=document.getElementById(Oe);o&&o.remove();const a=document.createElement("style");a.id=Oe,document.head.appendChild(a),((e,t)=>{const n=[`:root{${ke("direction")}:${t.backward?-1:1};}`,":root:has(.bespoke-marp-inactive){cursor:none;}"],r=t=>{const n=e[t].both?.defaultDuration||e[t].outgoing?.defaultDuration||e[t].incoming?.defaultDuration;return"forward"===t?n:n||r("forward")},o=t.duration||r(t.backward?"backward":"forward");void 0!==o&&n.push(`::view-transition-group(*){${Ee}:${o};}`);const i=e=>Object.entries(e).map(([e,t])=>`${e}:${t};`).join("");return n.push(`::view-transition-old(root){${i(Pe(e,{...t,type:"outgoing"}))}}`,`::view-transition-new(root){${i(Pe(e,{...t,type:"incoming"}))}}`),n})(r,{backward:l(),duration:u.duration}).forEach(e=>a.sheet?.insertRule(e));const s=document.documentElement.classList;s.add(Ie);let c=!1;const d=()=>{c||(n(i),c=!0,s.remove(Ie))},f=()=>{t(!1),a.remove(),s.remove(Ie)};try{t(!0);const e=document.startViewTransition(d);t(e),e.finished.finally(f)}catch(e){console.error(e),d(),f()}}),!1)};e.on("prev",r(t=>e.prev({...t,[Te]:!0}),{back:!0,cond:e=>e.index>0&&!((e.fragment??1)&&n.fragmentIndex>0)})),e.on("next",r(t=>e.next({...t,[Te]:!0}),{cond:t=>t.index+1<e.slides.length&&!(n.fragmentIndex+1<n.fragments.length)})),setTimeout(()=>{e.on("slide",r(t=>e.slide(t.index,{...t,[Te]:!0}),{cond:t=>{const n=e.slide();return t.index!==n&&(t.back=t.index<n,!0)}}))},0),e.on("fragment",e=>{n=e})};let Be;const Ke=()=>(void 0===Be&&(Be="wakeLock"in navigator&&navigator.wakeLock),Be),qe=async()=>{const e=Ke();if(e)try{return await e.request("screen")}catch(e){console.warn(e)}return null},Ve=async()=>{if(!Ke())return;let e;const t=()=>{e&&"visible"===document.visibilityState&&qe()};for(const e of["visibilitychange","fullscreenchange"])document.addEventListener(e,t);return e=await qe(),e};((e=document.getElementById(":$p"))=>{(()=>{const e=v("view");i.dataset.bespokeView=u.some(t=>t&&t===e)?e:""})();const t=(e=>{const t=v(e);return h({[e]:void 0}),t})("sync")||void 0;o.from(e,((...e)=>{const t=u.findIndex(e=>p()===e);return e.map(([e,n])=>e[t]&&n).filter(e=>e)})([[1,1,1,0],B({key:t})],[[1,1,0,1],se(e)],[[1,1,0,0],M],[[1,1,1,1],E],[[1,0,0,0],T()],[[1,1,1,1],A],[[1,1,1,1],de({history:!1})],[[1,1,0,0],C()],[[1,1,1,0],_],[[1,0,0,0],le],[[1,1,0,0],ve()],[[1,0,0,0],D()],[[1,1,1,0],F()],[[1,0,0,0],Ne],[[1,1,1,1],$],[[1,1,1,0],Ve]))})()}();</script></body></html>
