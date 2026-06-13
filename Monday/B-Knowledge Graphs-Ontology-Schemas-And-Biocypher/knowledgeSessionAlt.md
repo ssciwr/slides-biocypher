@@ -31,10 +31,34 @@ style: |
     margin-top: 14px;
     font-size: 0.9em;
   }
+  section.neo4j-graph img {
+    width: 500px;
+    height: 500px;
+    max-width: 500px;
+    max-height: 500px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+  section.ontology-example img {
+    width: 504px;
+    height: 504px;
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
 ---
 <!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
 
 # Knowledge Graphs & Ontologies in Biology
+
+---
+
+# What are Knowledge Graphs?
+
+<!-- Example 4-step biological path: EGFR gene encodes epidermal growth factor receptor protein; EGF protein binds epidermal growth factor receptor; receptor activation regulates MAPK signaling; MAPK signaling changes MYC gene expression. -->
 
 ![](typesOfGraphsInBiology.png)
 
@@ -43,15 +67,60 @@ style: |
 # Why we use Knowledge Graphs
 
 - Biology is extremely relational: **encoding, interaction, affecting, targeting.**
-- A `encodes` B
+- The `EGFR` gene `encodes` the epidermal growth factor receptor protein.
 - Understanding the full semantic connections between different entities, such as specific proteins, genes, and codons, is difficult without automation.
 
---- 
+---
+
+![](1.png)
+
+---
+
+![](2.png)
+
+---
+
+![](3.png)
+
+---
+
+![](4.png)
+
+---
+
+![](5.png)
+
+---
+
+![](6.png)
+
+---
+
+![](7.png)
+
+---
+
+![](8.png)
+
+---
+
+![](9.png)
+
+---
+
+![](10.png)
+
+---
+
+![](11.png)
+
+---
+
+![](12.png)
+
+---
 
 # Nodes vs Edges
-
-![](nodesAndEdges.png)
-
 * Nodes are the biological semantic entities in the graph, such as proteins, genes, transcription factors, pathways, diseases, or compounds.
 * Edges are the typed **relationships** between nodes, such as `interacts_with`, `regulates`, `expressed_in`, `targets`, or `associated_with`.
 <!-- (discuss uncertainly/clear statemnets, entails, containers, has, can) -->
@@ -66,13 +135,10 @@ Drug `treats` Disease B
 
 ---
 
-# Nodes vs Edges - COLLECTRI data Example
+# Nodes vs Edges
 
-* In a regulatory interaction dataset such as COLLECTRI, transcription factors and genes can be represented as nodes, while experimentally supported regulatory relationships can be represented as edges.
-* Both kinds of data are important: nodes tell us *what* exists, and edges tell us *how entities relate biologically*.
-* Any node can participate in multiple edge relationships
-
-
+![](nodesAndEdges.png)
+<!-- reviewing here now we can see what is a node and what is an edge -->
 ---
 <!-- _class: node-edge-examples -->
 # Node and Edge examples
@@ -113,6 +179,7 @@ any number of combinations is possible -->
 
 ---
 
+<!-- _class: neo4j-graph -->
 # Knowledge Graphs can be presented as a graph, e.g. Neo4j
 
 ![](neo4j.png)
@@ -172,6 +239,7 @@ any number of combinations is possible -->
 
 
 ---
+<!-- _class: ontology-example -->
 # Ontology example
 
 ![](ontologyExample.png)
@@ -282,6 +350,7 @@ transcriptional regulation:
 <p class="cite-text" data-marpit-fragment="5">* Catch: Batch effects</p>
 
 ---
+<!-- _class: ontology-example -->
 # Example
 
 ![](ontologyExample.png)
@@ -326,6 +395,7 @@ transcriptional regulation:
 
 ---
 
+<!-- _class: neo4j-graph -->
 # Knowledge Graphs can be presented as a graph, e.g. Neo4j
 
 ![](neo4j.png)
