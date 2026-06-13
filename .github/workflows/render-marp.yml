@@ -49,7 +49,7 @@ jobs:
           mkdir -p "$artifact_dir"
 
           while IFS= read -r -d '' file; do
-            output="${file%.md}_rendered.html"
+            output="${file%.md}.html"
             artifact_output="$artifact_dir/${output#./}"
 
             mkdir -p "$(dirname "$artifact_output")"
