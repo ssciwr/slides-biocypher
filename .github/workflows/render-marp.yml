@@ -64,10 +64,21 @@ jobs:
             cp "$output" "$artifact_output"
           done 3< marp-files.txt
 
-      - name: Build index page from README
+      - name: Copy image assets beside rendered decks
         if: steps.marp.outputs.found == 'true'
         shell: bash
-        run: node scripts/build-index.mjs "$RUNNER_TEMP/marp-html-artifacts"
+        run: |
+          set -euo pipefail
+
+          artifact_dir="$RUNNER_TEMP/marp-html-artifacts"
+          while IFS= read -r -d '' img; do
+            dest="$artifact_dir/${img#./}"
+            mkdir -p "$(dirname "$dest")"
+            cp "$img" "$dest"
+          done < <(find . -type f \
+            \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \
+               -o -iname '*.svg' -o -iname '*.gif' -o -iname '*.webp' \) \
+            -not -path './node_modules/*' -print0)
 
       - name: Build index page from README
         if: steps.marp.outputs.found == 'true'
