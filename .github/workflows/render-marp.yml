@@ -55,14 +55,14 @@ jobs:
 
           artifact_dir="$RUNNER_TEMP/marp-html-artifacts"
           mkdir -p "$artifact_dir"
-          while IFS= read -r -d '' file; do
+          while IFS= read -r -d '' file <&3; do
             output="${file%.md}.html"
             artifact_output="$artifact_dir/${output#./}"
-            npm exec marp "$file" --html --allow-local-files -o "$output"
+            npm exec -- marp "$file" --html --allow-local-files -o "$output" </dev/null
 
             mkdir -p "$(dirname "$artifact_output")"
             cp "$output" "$artifact_output"
-          done < marp-files.txt
+          done 3< marp-files.txt
 
       - name: Build index page from README
         if: steps.marp.outputs.found == 'true'
