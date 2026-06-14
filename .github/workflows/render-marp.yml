@@ -43,7 +43,7 @@ jobs:
               printf '%s\0' "$file" >> "$files"
               found=true
             fi
-          done < <(find . -type f -name '*.md' -print0)
+          done < <(find . -type f -name '*.md' ! -name 'README.md' -print0)
 
           echo "found=$found" >> "$GITHUB_OUTPUT"
 
@@ -63,6 +63,11 @@ jobs:
             mkdir -p "$(dirname "$artifact_output")"
             cp "$output" "$artifact_output"
           done < marp-files.txt
+
+      - name: Build index page from README
+        if: steps.marp.outputs.found == 'true'
+        shell: bash
+        run: node scripts/build-index.mjs "$RUNNER_TEMP/marp-html-artifacts"
 
       - name: Upload rendered HTML
         if: steps.marp.outputs.found == 'true'
