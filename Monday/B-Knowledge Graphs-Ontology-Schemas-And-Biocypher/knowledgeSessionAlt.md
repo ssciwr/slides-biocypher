@@ -127,6 +127,18 @@ style: |
   }
 ---
 
+---
+
+# Semantic Knowledge Graphs
+
+---
+
+# Sharing experience from your Projects
+
+* If you have built significant projects: please prepare for after the coffee break
+
+---
+
 # Knowledge Graphs & Ontologies in Biology
 
 ---
@@ -246,8 +258,7 @@ style: |
 # How this helps us to research
 ![](GeneMutation0001.png)
 * An evolution from databases suitable to general computing, where we tend to use ever-more complicated NoSQL procedures/RDBMS databases, which entail thousands of lines of code, tens of queries.
-* Those become entangled, slow, and difficult to manage while keeping high software quality and
-* With easy-to-state queries, we free ourselves of managing such "spaghetti"-like statements/code - and *often save time*
+  * Those become entangled, slow, and difficult to manage while keeping high software quality and
 
 ---
 # How this helps us to research
@@ -316,8 +327,7 @@ any number of combinations is possible -->
 
 # What is an ontology?
 
-* An ontology is a controlled vocabulary for a domain, such as `subclass of` and raw data types, metrics, and units.
-* It defines what kinds of things exist, what they mean, and how they can relate to each other.
+* An ontology is a controlled vocabulary for a domain,for example defining classes,`subclass of`, relationships,  aswell as data types, metrics, and units.
 * In biology, this matters because the same thing can be named, grouped, or interpreted differently across datasets.
 * In computational work, an ontology is a formal, explicit specification of a shared conceptualisation.
 
@@ -373,12 +383,11 @@ any number of combinations is possible -->
 
 # OWL modelling:
 tower `disjointWith` ruin
+
 ---
 
 ![bg cover](fullCastle.jpg)
----
 
-![bg cover](towerLooksFine.jpg)
 ---
 
 ![bg cover](demolishedTower.jpg)
@@ -400,11 +409,12 @@ tower `disjointWith` ruin
 
 ---
 <!-- _class: ontology-match -->
-# Activity: match the ontology standards
+# Quickfire
 
 <div class="match-grid">
   <div>
-    <p class="match-task">In groups: place each tag under the standard that provides it.</p>
+    <p class="match-task">Which Ontology standard does each of these properties belong to?
+    <small style="color:rgb(50,50,50)">And how have you used it?</small></p>
     <div class="term-tags">
       <span class="term-tag">subPropertyOf</span>
       <span class="term-tag">subClassOf</span>
@@ -434,7 +444,7 @@ tower `disjointWith` ruin
 ---
 
 
-# Will converting my CSV into an ontology be reasonably fast? How?
+# Will converting my CSV into Knowledge Graph data with a clear Ontology be reasonably fast? How?
 
 * Entity linking can automatically map text or labels to ontology/database IDs, e.g. “seizure” → HPO: Seizure; “EGFR” → UniProt/HGNC gene/protein ID.
 
@@ -451,93 +461,13 @@ tower `disjointWith` ruin
 
 ---
 
-# Schema role in the project: Defining the information frame of your research question
+# Schema files role in the project: Defining the information frame of your research question
 * We often customize the schema to recognise the information architecture/value intrinsic to our data (which may differ from another information frame)
 * ... to match our research question
 * Data added according to one schema, should be internally consistent
+* With BioCypher strict mode, we require provenance information, like source and license
+* 🥐
 <!-- in terms of batch effects, etc. -->
----
-
----
-
-# Challenges when building a Knowledge Graph schema
-
-* Sometimes, the same biological “unit” can be described at slightly different, overlapping scales or frames
-
-* Without schema discipline that BioCypher enforces, large graphs can become difficult to trust, query, and maintain - query results can be incomplete in practice
-
-* This does not mean documenting every decision, but documenting every choice of types, relationships, and their frame
-
----
-# Schema framing example
-
----
-
-![bg cover](flammkuchen.jpg)
-
-<!-- this is not a pizza... or is it? Our research question frame matters. Do we define pizza as the ingredients, cooked? The appearance? The appearance in a location, or in the context of a given cuisine (e.g. Italian)? -->
-
----
-
-# Why schema files are useful to you
-
-* They make the graph structure understandable in a concise, standardised way.
-* They clarify valid nodes and edges:
-<!-- flammkuchen, but not pizza, for example -->
-* They prevent every adapter from inventing slightly different labels for the same things.
-* They give you a guide to what you will use to query Neo4j later
-
-<!-- they provide a concise definition of the biological concepts and links between them in the dataset. The graph structure is usually tailored to your research question too -->
----
-
-# Small Group Discussion: Your Schemas
-
----
-<!-- _class: csv-exercise -->
-# Exercise: CSV to graph
-
-<div class="exercise-grid">
-  <div>
-    <ol>
-      <li>Pick the node columns.</li>
-      <li>Name the edge.</li>
-      <li>Mark provenance fields.</li>
-      <li>Which row fails strict mode?</li>
-    </ol>
-  </div>
-  <div>
-    <p class="csv-label">example.csv</p>
-    <table>
-      <thead>
-        <tr>
-          <th>regulator</th>
-          <th>target</th>
-          <th>effect</th>
-          <th>source</th>
-          <th>license</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>MYC</td>
-          <td>CDK4</td>
-          <td>activation</td>
-          <td>ExampleDB</td>
-          <td>CC-BY</td>
-        </tr>
-        <tr>
-          <td>STAT3</td>
-          <td>SOCS3</td>
-          <td>activation</td>
-          <td></td>
-          <td>CC-BY</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- Answer: nodes = regulator and target genes; edge = transcriptional regulation; provenance = source and license; failing row = STAT3 to SOCS3 because source is missing. -->
 
 ---
 
@@ -604,6 +534,95 @@ transcriptional regulation:
   input_label: transcriptional regulation
   properties: ...
 </code></pre>
+
+---
+
+# Not the role of Schema files: "Preprocessing" / Data ETL Pipelines
+* The initial data gathering/processing is not what schema files describe
+  * (Extract, Transform Load)
+* The Schema describes a specific, confined, Knowledge Graph [with provenance], for the data in that project
+
+---
+
+# Challenges when building a Knowledge Graph schema
+
+* Sometimes, the same biological “unit” can be described at slightly different, overlapping scales or frames
+
+* Without schema discipline that BioCypher enforces, large graphs can become difficult to trust, query, and maintain - query results can be incomplete in practice
+
+* This means documenting explicitly your choice of types, relationships, and building the frame your schema  has deliberately
+
+---
+# Schema framing example
+
+---
+
+![bg cover](flammkuchen.jpg)
+
+<!-- this is not a pizza... or is it? Our research question frame matters. Do we define pizza as the ingredients, cooked? The appearance? The appearance in a location, or in the context of a given cuisine (e.g. Italian)? -->
+
+---
+
+# Why schema files are useful to you
+
+* They make the graph structure understandable in a concise, standardised way.
+* They clarify valid nodes and edges
+<!-- flammkuchen, but not pizza, for example -->
+* They prevent every adapter from inventing slightly different labels for the same things.
+* They give you a guide to what you will use to query Neo4j later
+
+<!-- they provide a concise definition of the biological concepts and links between them in the dataset. The graph structure is usually tailored to your research question too -->
+
+---
+<!-- _class: csv-exercise -->
+# Schema and Properties Exercise: CSV to graph
+
+<div class="exercise-grid">
+  <div>
+    <ol>
+      <li>Pick the node columns.</li>
+      <li>Name the edge.</li>
+      <li>Mark provenance fields.</li>
+      <li>Which row fails strict mode?</li>
+    </ol>
+  </div>
+  <div>
+    <p class="csv-label">example.csv</p>
+    <table>
+      <thead>
+        <tr>
+          <th>regulator</th>
+          <th>target</th>
+          <th>effect</th>
+          <th>source</th>
+          <th>license</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>MYC</td>
+          <td>CDK4</td>
+          <td>activation</td>
+          <td>ExampleDB</td>
+          <td>CC-BY</td>
+        </tr>
+        <tr>
+          <td>STAT3</td>
+          <td>SOCS3</td>
+          <td>activation</td>
+          <td></td>
+          <td>CC-BY</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Answer: nodes = regulator and target genes; edge = transcriptional regulation; provenance = source and license; failing row = STAT3 to SOCS3 because source is missing. -->
+
+---
+
+# Small Group Discussion: Your Schemas
 
 ---
 
@@ -677,11 +696,18 @@ transcriptional regulation:
   <li data-marpit-fragment="3"><strong>What does Biolink provide for biomedical entities and relationships?</strong><br>Answer: Shared upper-level schema across independent data and graphs</li>
 </ol>
 
-# Real knowledge graph + ontology use:
+---
+
+# Knowledge graphs in practise:
 
 ---
 
-# We interact via queries or visual tools e.g. Neo4j
+# We interact with knowledge graphs with:
+* Queries
+* Visual tools e.g. Neo4j
+* Triplet inspection
+
+<!-- e.g. for filtering data, for overview, for finding duplicates -->
 
 
 ---
@@ -861,9 +887,13 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 # BioCypher in Practice: Configure stringent rules for confident data querying, with project-specific schemas
 
 * Rather than having questions later, such as “is seizure a Symptom, Clinical Finding, or PatientFeature in this context?”, you decide **when integrating data**.
-* Being able to have an explicit record of what decision was made means you can make sure slight semantic differences cannot prevent finding everything that actually satisfies the query in your dataset.
+* Being able to have an explicit record of what decision was made means you can make sure slight semantic differences **cannot prevent finding everything that actually satisfies the query** in your dataset.
 * For example: recording seizure as a Clinical Finding, but only looking for “Symptoms” and not finding it.
-* We cover most harmonization levels (structural, label, semantic) on Wednesday
+
+---
+# Data Harmonization
+* Combining Heterogeneous data and decisions with conflicting or missing information
+* We cover most harmonization levels for data (structural, label, semantic) on Wednesday
 
 <!-- when integrating data = conceptually when defining the schema
 
@@ -897,9 +927,9 @@ Add strict mode? -->
 ---
 
 <ol>
-  <li><strong>What context frame should your schema address?</strong><br>Answer: Your research model, and often your specific research question</li>
+  <li><strong>What context frame should your schema address?</strong><br>Answer: Your focus/decision. E.g. Your research model, and often your specific research question</li>
   <li data-marpit-fragment="1"><strong>In a BioCypher schema, what does <code>represented_as: node</code> mean?</strong><br>Answer: Store as a node (which is clarified, because everything is a Triplet "under the hood")</li>
-  <li data-marpit-fragment="2"><strong>What does strict mode help preserve?</strong><br>Answer: Source and license provenance</li>
+  <li data-marpit-fragment="2"><strong>What does strict mode help preserve?</strong><br>Answer: Data Source and license provenance</li>
   <li data-marpit-fragment="3"><strong>What can a Neo4j <code>MATCH</code> query follow?</strong><br>Answer: Node-edge patterns</li>
 </ol>
 
