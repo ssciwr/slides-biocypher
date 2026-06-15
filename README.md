@@ -7,13 +7,26 @@ Pages.
 ## Monday
 
 - [Talks — Introduction](Monday/Talks/intro.html)
-- [Participant introductions](Monday/A-participant-intro/intro-participants.html)
-- [Knowledge Graphs, Ontologies, Schemas and BioCypher](Monday/B-Knowledge%20Graphs-Ontology-Schemas-And-Biocypher/knowledgeSessionAlt.html)
-- [BioCypher pathways](Monday/C-biocypher-pathways/intro-bc-pathways.html)
+- [Session A: Participant introductions](Monday/A-participant-intro/intro-participants.html)
+- [Session B: Knowledge Graphs, Ontologies, Schemas and BioCypher](Monday/B-Knowledge%20Graphs-Ontology-Schemas-And-Biocypher/knowledgeSessionAlt.html)
+- [Session C: BioCypher pathways](Monday/C-biocypher-pathways/intro-bc-pathways.html)
 
----
+## Tuesday
 
-The decks are authored as [Marp](https://marp.app/) markdown (files that opt in
-via the Marp front-matter flag). On every push to `main` the workflow in
-`.github/workflows/render-marp.yml` renders each deck to HTML, builds this page
-as `index.html`, and deploys everything to GitHub Pages.
+- [Session B: Main slides](Tuesday/B-BioCypher-Adapters/sessionb_adapters_main_slides.html)
+- [Session B: Novice Track](Tuesday/B-BioCypher-Adapters/sessionb_novice_track_slides.html)
+- [Session B: Advanced Track](Tuesday/B-BioCypher-Adapters/sessionb_advanced_track_slides.html)
+- [Session C: BioCypher MCP](Tuesday/C-MCP/Biocypher-genAI.pdf)
+
+## Wednesday
+
+- [Session A: Open-source software development](Wednesday/A-OSS-best-practices/Open_source_software_collaboration.pdf)
+- [Session B: Harmonizing biomedical data and croissant metadata](Wednesday/B-Harmonizing-Biomedical-data-Croissant-Metadata/wednesday_b_croissant_metadata_slides.html)
+- [Session C: Harmonizing biomedical data and croissant metadata](Wednesday/C-Harmonizing-Biomedical-data-II/04_wednesday_c_registry_adapter_metadata.html)
+
+## Thursday
+
+- [Session B: Building adapters in BioCypher](Thursday/B-Building%20adapters%20in%20BioCypher/05_thursday_b_multiple_adapters_information_fusion.html)
+
+
+The decks are authored as [Marp](https://marp.app/) markdown.
