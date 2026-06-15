@@ -80,6 +80,20 @@ jobs:
                -o -iname '*.svg' -o -iname '*.gif' -o -iname '*.webp' \) \
             -not -path './node_modules/*' -print0)
 
+      - name: Copy PDF assets
+        if: steps.marp.outputs.found == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          artifact_dir="$RUNNER_TEMP/marp-html-artifacts"
+          while IFS= read -r -d '' pdf; do
+            dest="$artifact_dir/${pdf#./}"
+            mkdir -p "$(dirname "$dest")"
+            cp "$pdf" "$dest"
+          done < <(find . -type f -iname '*.pdf' \
+            -not -path './node_modules/*' -print0)
+
       - name: Build index page from README
         if: steps.marp.outputs.found == 'true'
         shell: bash
