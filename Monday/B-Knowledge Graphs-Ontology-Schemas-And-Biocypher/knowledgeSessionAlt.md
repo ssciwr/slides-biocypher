@@ -50,7 +50,6 @@ style: |
     margin: 0 auto;
   }
 ---
-<!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
 
 # Knowledge Graphs & Ontologies in Biology
 
@@ -64,11 +63,50 @@ style: |
 
 ---
 
-# Why we use Knowledge Graphs
+# Data in biology is messy
+* High quantity, with variance
+* Some - or most - of the most important information is captured in relationships: **encoding, binding, targeting.**
+* Like Philosophy, Formal Logic, Expert Systems
+* For example: **The EGFR gene `encodes` the epidermal growth factor receptor protein**.
+* Understanding the full semantic relationships between different entities, such as specific proteins, genes, and codons, is difficult
 
-- Biology is extremely relational: **encoding, interaction, affecting, targeting.**
-- The `EGFR` gene `encodes` the epidermal growth factor receptor protein.
-- Understanding the full semantic connections between different entities, such as specific proteins, genes, and codons, is difficult without automation.
+---
+
+# Defining Graph Data
+* We have two tasks:
+* Clarifying how types of entities relate as types(e.g. `gene` **encodes** `protein` is a valid relationship between those two "types"), but not `gene` **binds to** `protein`
+* Clarifying for each instance of data that we have which of the types we have defined it is (e.g. `EFGR gene` is a `gene`)
+
+* Critically, we can model both on a graph; both definitions, and instance-data
+
+
+
+---
+# Each entity can have many relationships
+
+<div class="example-grid">
+  <figure data-marpit-fragment="1">
+    <img src="geneEncodesProtein.png" alt="Gene encodes protein">
+    <figcaption>a gene(e.g. EGFR) encoding a protein</figcaption>
+  </figure>
+  <figure data-marpit-fragment="2">
+    <img src="geneRegulatingAnotherGene.png" alt="Gene regulating another gene">
+    <figcaption>a gene regulating another gene</figcaption>
+  </figure>
+</div>
+
+---
+
+# Formalizing relationships: Nodes and Edges
+* Nodes are the biological semantic entities in the graph
+* Proteins, genes, transcription factors, pathways, diseases, or compounds...
+* Edges are the typed **relationships** between nodes
+* `interacts_with`, `regulates`, `expressed_in`, `targets`, or `associated_with`.
+<!-- (discuss uncertainly/clear statemnets, entails, containers, has, can) -->
+* Usually, we break down every kind of information in a knowledge graph into triples:
+* Subject `predicate` Object
+* Drug `treats` Disease B
+* You can define this **for your own dataset with BioCypher!**
 
 ---
 
@@ -120,69 +158,66 @@ style: |
 
 ---
 
-# Nodes vs Edges
-* Nodes are the biological semantic entities in the graph, such as proteins, genes, transcription factors, pathways, diseases, or compounds.
-* Edges are the typed **relationships** between nodes, such as `interacts_with`, `regulates`, `expressed_in`, `targets`, or `associated_with`.
-<!-- (discuss uncertainly/clear statemnets, entails, containers, has, can) -->
-* Usually, we break down every kind of information in a knowledge graph into triples:
-<p class="cite-text" data-marpit-fragment="3">
-Subject `relationship` Object
-Drug `treats` Disease B
-</p>
-* **You can define this for your own dataset with BioCypher!**
+---
+
+# How this helps us to research
+![](GeneMutation0001.png)
+
+* We can **query** this knowledge to go from a specific protein to the gene which encodes it, and generate a list of the candidate genes to investigate, which regulate that gene.
+* ... using efficient, easy to state queries graph
 
 
+# How this helps us to research
+![](GeneMutation0001.png)
+* An evolution from other software approaches like ever-more complicated NoSQL procedures which ential thousands of lines of code, tens of queries, and thus become entangled, slow, and difficult to manage while using software best practises - usually based in traditional RBDBS/Database theory
+* With easy-to-state queries, we free ourselves of managing that, and can avoid using copy-paste and minor edits/appendending as a fallback - and *often save time*
+
+# How this helps us to research
+![](GeneMutation0001.png)
+* Broadly speaking, we can include the existing scientific body of relationships and "ontologies" in our graphs"
+
+* Large BioCypher projects often combine massive bodies of scientific knowledges
+
+* E.g. Existing Gene information
 
 ---
 
-# Nodes vs Edges
-
-![](nodesAndEdges.png)
-<!-- reviewing here now we can see what is a node and what is an edge -->
----
-<!-- _class: node-edge-examples -->
-# Node and Edge examples
-
-<div class="example-grid">
-  <figure data-marpit-fragment="1">
-    <img src="geneEncodesProtein.png" alt="Gene encodes protein">
-    <figcaption>a gene encoding a protein</figcaption>
-  </figure>
-  <figure data-marpit-fragment="2">
-    <img src="geneRegulatingAnotherGene.png" alt="Gene regulating another gene">
-    <figcaption>a gene regulating another gene</figcaption>
-  </figure>
-</div>
----
-
-# How we interact with a knowledge graph
-![](geneRegulatingAnotherGene.png)
+# How we actually interact with a knowledge graph: **MATCH**
 
 * We can "query out" from the root node along a path, looking at its relationships
 * In Cypher, `MATCH` returns paths that satisfy the node and relationship pattern, e.g. `encodes` but not others e.g. `affects` **and the other node(s)**
 * This naturally fits how we model causal relationships conceptually - as causal inference across a path of entities
 * Or thinking of conditions as sub classes, like **Immune System Disease** being a `subclass of` **Disease**
 
-<!-- first connection level in the path is "0", that's why you see [0..*] notation 
+<!-- first connection level in the path is "0", that's why you see [0..*] notation
 any number of combinations is possible -->
 
 ---
 
-# How this helps us to research
-![](GeneMutation0001.png)
+<!-- _class: neo4j-graph -->
+# With Neo4J for example, knowledge graphs are not just a concept or config file but visible:
 
-* We can **query** this knowledge to go from a protein to the gene which encodes it, and generate a list of the different genes which regulate that gene.
-* This allows us to use the existing scientific body of relationships to identify interesting candidate genes for further investigation.
+![](neo4j.png)
 
-* Large BioCypher projects combine massive bodies of scientific knowledge
-* ... which can be queried without thousand-line procedures of queries you need in other solutions (*NoSQL/RDBMS*)
+<!-- demo -->
 
 ---
 
-<!-- _class: neo4j-graph -->
-# Knowledge Graphs can be presented as a graph, e.g. Neo4j
+1. What is a node?
+2. What is an edge?
+3. What are the three parts of a triple?
+4. How are Graph queries different from RDBMS database queries?
+5. Which Neo4J Cypher keyword keeps triples based on them satisfying a condition?
 
-![](neo4j.png)
+---
+
+<ol>
+  <li><strong>What is a node?</strong><br>Answer: Biological entity</li>
+  <li data-marpit-fragment="1"><strong>What is an edge?</strong><br>Answer: Typed relationship</li>
+  <li data-marpit-fragment="2"><strong>What are the three parts of a triple?</strong><br>Answer: Subject, predicate, object</li>
+  <li data-marpit-fragment="3"><strong>How are Graph queries different from RDBMS database queries?</strong><br>Answer: Easy/Natural to state and read, avoid long procedures with multiple queries, can take advantage of sub types in data edges and nodes</li>
+  <li data-marpit-fragment="4"><strong>Which Neo4J Cypher keyword keeps triples based on them satisfying a condition?</strong><br>Answer: <code>MATCH</code></li>
+</ol>
 
 ---
 
@@ -198,15 +233,6 @@ any number of combinations is possible -->
 <p class="cite-text" data-marpit-fragment="5">Different algorithm options exist to manage how these reasoning inferences can be drawn</p>
 
 ---
-# BioCypher allows you to reinterpret old information for new insights
-
-* 1. Imagine you have 3 different datasets from different experiments focusing on different genes.
-* 2. You can use BioCypher to import data from each experiment, and provide data fitting connecting your knowledge graph, to establish how these genes are connected (or use an existing public dataset containing that information)
-* 3. You can make new graph queries with the proteins between these 3 datasets to use in a 4th paper.
-
-* If the same entity appears in multiple datasets, you can choose the strategy for connecting it to the graph.
-
----
 
 # What is an ontology?
 
@@ -219,33 +245,65 @@ any number of combinations is possible -->
 
 ---
 
-# Ontology-standards: OWL, RDF, and RDFS
-
-* OWL is a standard with which to formalize ontologies.
-* It defines classes, properties, axioms, and reasoning rules.
-* RDFS adds schema vocabulary for classes and relationships such as `rdfs:subPropertyOf`.
-* Property hierarchy example: `regulates` → `regulates expression of` → `positively regulates expression of` → `positively regulates transcription of`.
-
-<!-- computational approach, e.g. materialised triplets, is separate -->
-
----
-
 # Ontology example: precise medical terminology
 
 * In medicine, precise terminology is not just style, it changes meaning.
-* “Seizure”, “convulsion”, and “abnormal motor movement” can overlap in everyday speech, but they are not the same thing in structured clinical data.
+* **“Seizure”, “convulsion”, and “abnormal motor movement”** can overlap in everyday speech, but they are not the same thing in structured clinical data.
 * An ontology helps decide what concept is being described and how it relates to symptoms, diagnoses, observations, and patient features.
-* Not actual data - relationships 
+* Not actual data - The frame of possible data and relationships
+
+<!-- akin to defining classes/interfaces in code -->
+
+---
+
+# Ontology-standards: OWL
+
+* OWL is a standard with which to formalize ontologies.
+* Classes, properties, axioms, and reasoning
+
+---
+![bg cover](fullCastle.jpg)
+<!-- what is reasoning ? -->
+
+---
+![bg cover](validTower.jpg)
+
+---
+![bg cover](towerLooksFine.jpg)
+
+---
+![bg cover](demolishedTower.jpg)
+
+---
+# Ontology-standards: RDFS
+* RDFS adds schema vocabulary for classes and relationships such as `rdfs:subPropertyOf`.
+* subPropertyOf hierarchy example: `regulates` → `regulates expression of` → `positively regulates expression of` → `positively regulates transcription of`.
+
+<!-- computational approach, e.g. materialised triplets, is separate -->
+
 
 
 ---
-<!-- _class: ontology-example -->
-# Ontology example
 
-![](ontologyExample.png)
+![bg cover](ontologyExample.png)
 
 
 <p class="cite-text" data-marpit-fragment="2">Daniel Himmelstein, Dec 19, 2016</p>
+
+
+---
+
+![](rangeOfOntologies.png)
+---
+
+
+# Will converting my CSV into an ontology be reasonably fast? How?
+
+* Entity linking can automatically map text or labels to ontology/database IDs, e.g. “seizure” → HPO: Seizure; “EGFR” → UniProt/HGNC gene/protein ID.
+
+* For tabular data, a tool called OntoWeaver can map tables into semantic knowledge graphs in BioCypher.
+
+* For free text, it can be partially automated: scispaCy, MetaMap, CLAMP, MedCAT.
 
 ---
 
@@ -259,17 +317,41 @@ any number of combinations is possible -->
 # Schemas role in the project: Defining the information frame of your research question
 * We often customize the schema to bespokely recognise the information architecture/value intrinsically in our data (which may differ from another information frame)
 * ... to match our research question
-* What is in one schema, should usually be internally consistent in terms of batch effects
+* Data added according to one schema, should be internally consistent
+<!-- in terms of batch effects, etc. -->
+---
+
+---
+
+# Challenges when building a Knowledge Graph schema
+
+* Sometimes, the same biological “unit” can be described at slightly different, overlapping scales or frames
+
+* Without schema discipline that BioCypher enforces, large graphs can become difficult to trust, query, and maintain - query results can be incomplete in practise
+
+* This does not mean documenting every decision; but documentation every choice of types, relationships and the frame of those
+
+# Schema framing example
+
+![bg cover](flammkuchen.jpg)
+
+<!-- this is not a pizza... or is it? Our research question frame matters. Do we define pizza as the ingredients, cooked? The apperance? The appearance, in a location, or in the context of a given cusine (e.g. Italian)? -->
+
 ---
 
 # Why schema files are useful to you
 
 * They make the graph structure understandable in a concise, standardised way.
-* They clarify valid nodes and edges.
+* They clarify valid nodes and edges:
+<!-- flammkuchen, but not pizza, for example -->
 * They prevent every adapter from inventing slightly different labels for the same things.
 * They give you a guide as to what you will use to query Neo4j with later
 
 <!-- they provide a concise definition of the biological concepts and links between them in the dataset. The graph structure is usually tailored to your research question too -->
+---
+
+# Small Group Discussion: Your Schemas
+
 ---
 
 # BioCypher schema example
@@ -350,21 +432,20 @@ transcriptional regulation:
 <p class="cite-text" data-marpit-fragment="5">* Catch: Batch effects</p>
 
 ---
-<!-- _class: ontology-example -->
-# Example
 
-![](ontologyExample.png)
+# Side note: Label Harmonization - is not addressed by ontologies
+![](labelingConfusion.jpeg)
 
-<!-- hopefully somebody finds something to dislike, and then we can say: the point is a difference frame of viewing - agreeing ahead of time -->
-<!-- experimental whether to say that, need to check on Sunday; I don't want to frame that Biolink relationships are irrelevant from some views which clashes with the point above -->
-<!-- the fact participants will have slightly different models of how object entities/definitions and relationships are defined will not be that revealed -->
-<!-- they may confuse that this example of a general ontology shows something you may change, with it being a Biolink "gold example" -->
-
+* About data quality
+* Part of "Harmonization", covered later
 ---
 
+# Biolink
+<img src="bioLinkLogo.png" alt="Biolink logo">
+
+---
 # Biolink as shared biomedical language
 <ul>
-<li data-marpit-fragment="1" style="list-style: none;"><img src="bioLinkLogo.png" alt="Biolink logo"></li>
 <li data-marpit-fragment="2">Biolink provides a shared upper level schema for biomedical entities and relationships.</li>
 <li data-marpit-fragment="3">As a researcher you can extend these entities or relationships for your research question.</li>
 <li data-marpit-fragment="4">That common grammar makes integration with other data sources easier, and makes running the same query on two different sets of data easier.</li>
@@ -395,21 +476,43 @@ transcriptional regulation:
 
 ---
 
+1. What is an ontology?
+2. What does reasoning add to a graph?
+3. Ontology or schema: which is the project-specific guide for a dataset?
+4. What does Biolink provide for biomedical entities and relationships?
+
+---
+
+<ol>
+  <li><strong>What is an ontology?</strong><br>Answer: Broadly: Controlled vocabulary, allowed structure and reasoning rules</li>
+  <li data-marpit-fragment="1"><strong>What does reasoning add to a graph?</strong><br>Answer: Inferred statements derived from the initial data</li>
+  <li data-marpit-fragment="2"><strong>Ontology or schema: which do you build to express the data addressed by your research question</strong><br>Answer: Schema</li>
+  <li data-marpit-fragment="3"><strong>What does Biolink provide for biomedical entities and relationships?</strong><br>Answer: Shared upper level schema across independent data and graphs</li>
+</ol>
+
+---
+
 <!-- _class: neo4j-graph -->
-# Knowledge Graphs can be presented as a graph, e.g. Neo4j
+
+---
+# Real Knowledge Graph + Ontology use:
+
+---
+
+# We interact via queries or visual tools e.g. Neo4j
 
 ![](neo4j.png)
 
 ---
 
-# Knowledge Graphs information can be overlaid on spatial data points acting as nodes:
+# We can display that with other useful data context, e.g. spatially:
 
 ![](spatialKG.png)
 
 ---
 
 
-# Querying knowledge graphs with Neo4j
+# We can write queries based on multiple relationships, inspired by our Schema.
 
 * Neo4j allows you to write queries, which can each `match` based upon multiple relationships and nodes.
 * This asks which transcription factors activate which genes, and what references support the relationship.
@@ -424,7 +527,7 @@ LIMIT 10
 
 ---
 
-<!-- ask Magdalena: Asparagine → Glycine is the actual amino-acid substitution or not? -->
+<!--  Asparagine → Glycine is the actual amino-acid substitution or not? -->
 <!--
 # We all use relationships to inform research inquiry - Medical study example
 
@@ -466,30 +569,18 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 * But in some cases, we have many different partially related concepts: different amino acids, thousands of genes, and different ways of categorising disease.
 * Knowledge graphs can help us identify and filter the *most promising candidates* at scales of relationship traversal we could never achieve ourselves by hand.
 -->
----
-
-# Why Knowledge Graphs are useful to you
-
-* If you believe the processes, pathways, and subtypes in your data provide **semantic context** to research, you can connect your data to other datasets.
-* That makes it easier to manage data duplication, and the biological context around relationships.
-* Third-party knowledge graphs can provide prior biological context, but they do not become extra experimental samples by default.
-* Knowledge graphs work with relationships in any direction.
-
-![](typesOfGraphsInBiology.png)
 
 ---
 
 
-# Computational value of explicit assertions
+# Fundamental Extensibility: Computational value of explicit assertions
 
 * Explicit assertions can be queried in Neo4j.
 * They can be filtered, validated against schema constraints and embedded as features for statistical and machine learning models(e.g. historical cases).
-* Formal schemas and constraints can be processed computationally.
+* Formal schemas and constraints can be processed computationally, e.g. reasoning rules, as much as they help you understand the data well
 
 ---
-
-# Citations and provenance are key for reliable research
-
+# Fundamental trust, reliability and reuse:
 * For data provenance (for example from the start, using BioCypher strict mode), standardization and graph libraries support citing data information
 * In Biology, your data's source and batch is critical for batch effects and comparability
 * A relationship or entire dataset can have a source, method, dataset, paper, and confidence.
@@ -497,14 +588,29 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 
 <p class="cite-text" data-marpit-fragment="5">McMillen, P., Novak, R., & Levin, M. (2020). Toward decoding bioelectric events in Xenopus embryogenesis: New methodology for tracking interplay between calcium and resting potentials in vivo. Journal of Molecular Biology, 432(2), 605–620.</p>
 
+
 ---
 
-# Knowledge Graphs
+# The combination of those factors - computational explicitness, a concise schema definition, and reliability and reuse readiness - allows you to derive useful information soundly.
 
-* A knowledge graph becomes useful because entities are not treated as isolated rows; they are connected through typed, interpretable relationships.
-* Queries can follow biologically meaningful paths across genes, proteins, pathways, phenotypes, treatments, and diseases.
-* Knowledge graphs are useful when data for a specific subtype is sparse because they can point to related conditions, phenotypes, mechanisms, or prior evidence.
-* This supports hypothesis generation and comparator discovery, but it does not increase the experimental sample size by itself.
+---
+# Integrating data for new analysis
+
+* 1. Imagine you have 3 different datasets from different experiments focusing on different genes.
+* 2. You can use BioCypher to import data from each experiment, and provide data fitting connecting your knowledge graph, to establish how these genes are connected (or use an existing public dataset containing that information)
+* 3. You can make new graph queries with the proteins between these 3 datasets to use in a 4th paper.
+
+* If the same entity appears in multiple datasets, you can choose the strategy for connecting it to the graph.
+
+
+---
+
+# Key concepts in a nutshell
+
+* A knowledge graph becomes useful because entities are not treated as isolated rows; they are connected through typed, interpretable relationships
+* Queries can follow biologically meaningful paths across genes, proteins, pathways, phenotypes, treatments, and diseases - for example, causal paths
+* BioCypher supports strategies for graph database choice, plus **ontology-choice freedom**, as well as **harmonization** and **information fusion** strategies with third party software tools
+* Use cases for actual research will be covered in later sessions
 
 ---
 
@@ -550,65 +656,38 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 * This is prior context for the model, not automatic extra sample size.
 
 -->
----
-
-
-
-# Challenges with knowledge graphs
-
-* Different ways of describing the same ontologies, or different levels of data granularity for knowledge graph content.
-
-* Sometimes, the same biological “unit” can be described at slightly different, overlapping scales.
-
-* Without schema discipline that BioCypher enforces, large graphs can become difficult to trust, query, and maintain.
 
 ---
 
-# The goal of BioCypher is to resolve the difficulty of:
+# Using BioCypher means:
 
-(A) understanding the applicability of knowledge graphs for biological research inquiry in your subdomain
-(B) enabling easier to state queries with Knowledge Graphs
-(C) harmonizing your own data with an extensible Separation Of Concerns technical approach
-(D) sharing your data in a reusable way with the wider scientific community to achieve faster overall progress in biology
+* you can access and extend existing Knowledge Graph datasets for biological research inquiry in your subdomain
+* create easier to state queries by having a project-level schema to reference for constructing queries (e.g. in Neo4J)
+* harmonize your own data with an extensible Separation Of Concerns technical approach using third party software for strategies, and defining the graph in BioCypher in a consistent, interpretable, reusable format across projects
+* sharing your data in a reusable way with the wider scientific community to achieve faster overall progress in biology
 
 ---
 
 # BioCypher goal / purpose
 
 * BioCypher does not try to make one universal biology graph;
-* It helps you to create a graph for your research question, with access to biological data sources
+* It helps you to create a graph for your research question, with access to biological data sources, with each project schema its own frame
 * It keeps source provenance while mapping data onto biomedical ontology's.
 
 <p class="cite-text" data-marpit-fragment="5">Lobentanzer, S., Aloy, P., Baumbach, J., Bohar, B., Carey, V. J., Charoentong, P., et al. (2023). Democratizing knowledge representation with BioCypher. Nature Biotechnology, 41(8), 1056–1059.</p>
 
 ---
 
-# The power of ontology:
-
-* Having relationships defined in an ontology schema means confusion over similar entities, entities that are part of each other, dissimilar but similarly named entities, a recurrent risk in biology, or the same entity with different names, such as “human” vs “Homo sapiens”, can be approached systemically for better **data consistency**.
-
-![](labelingConfusion.jpeg)
-
----
-
-# BioCypher configures stringent regulation, with project-specific schemas
+# BioCypher in Practise: Configure stringent regulation for confident data querying, with project-specific schemas
 
 * Rather than having questions later, such as “is seizure a Symptom, Clinical Finding, or PatientFeature in this context?”, you decide **when integrating data**.
-* Being able to have an explicit record of what decision was made means you can make sure queries are exhaustive for your data, and slight semantic differences cannot prevent finding everything that actually satisfies the query in your dataset.
-* Example: recording seizure as a Clinical Finding, but only looking for “Symptoms” and not finding it.
+* Being able to have an explicit record of what decision was made means you can make sure slight semantic differences cannot prevent finding everything that actually satisfies the query in your dataset.
+* For example: recording seizure as a Clinical Finding, but only looking for “Symptoms” and not finding it.
 * We cover most Harmonization levels(Structural, Label, Semantic) on Wednesday
 
-<!-- when integrating data = conceptually when defining the schema -->
+<!-- when integrating data = conceptually when defining the schema
 
----
-
-# But, my data would take a long time to convert into ontology concepts from raw CSVs...
-
-* Entity linking can automatically map text or labels to ontology/database IDs, e.g. “seizure” → HPO: Seizure; “EGFR” → UniProt/HGNC gene/protein ID.
-
-* For tabular data, OntoWeaver can map tables into semantic knowledge graphs in BioCypher.
-
-* For free text, it can be partially automated: scispaCy, MetaMap, CLAMP, MedCAT.
+Add strict mode? -->
 
 <!-- also removed because we will wait until Edwins Tuesday session to cover adapters
 ---
@@ -630,13 +709,54 @@ IVF is extremely difficult and can be unpredictable for women to undertake, as e
 -->
 ---
 
-# Summary
+1. Does BioCypher generate your data triplets for you?
+2. In a BioCypher schema, what does `represented_as: node` mean?
+3. What does strict mode help preserve?
+4. What can a Neo4j `MATCH` query follow?
+
+---
+
+<ol>
+  <li><strong>Does BioCypher generate your data triplets for you?</strong><br>Answer: No</li>
+  <li data-marpit-fragment="1"><strong>In a BioCypher schema, what does <code>represented_as: node</code> mean?</strong><br>Answer: Store as a node</li>
+  <li data-marpit-fragment="2"><strong>What does strict mode help preserve?</strong><br>Answer: Source and license provenance</li>
+  <li data-marpit-fragment="3"><strong>What can a Neo4j <code>MATCH</code> query follow?</strong><br>Answer: Node-edge patterns</li>
+</ol>
+
+---
+
+# Summary: Key concepts and how BioCypher frames them
 
 - Knowledge graphs help us make data with relationships navigable and queryable.
-- Defining schemas for your ontology in BioCypher lets us enforce data consistency and establish data provenance. Schemas give you powerful insight into what queries you can make.
+- Defining schemas for your ontology in BioCypher enables us to enforce data consistency and establish data provenance. Schemas give you powerful insight into what queries you can make.
 - Existing ontologies and your datasets can be harmonized with provenance via strict mode from the start.
+
+---
+
+# Summary: What this does and how we will do it:
 - This supports richer queries and candidate discovery, without maintaining complex, slow query procedures.
-- Now we understand the theory here, we will cover how these actually interact from a CSV to a public dataset.
+- Now we understand the theory here, we will cover how these actually interact, from using a CSV to a public dataset.
 
 <!-- maybe don't cover: batch effects and why extended datasets that analyzed the same data you have(e.g. but 10x more) cannot simply contribute to your data samples, even if you use exactly the same Ontology (e.g. BioLink -->
 <!-- all icons from https://bioart.niaid.nih.gov/ BIOART -->
+
+
+---
+
+# Thank you for listening
+
+---
+
+# Image/Icon Credits
+
+Icons: From BioArt: https://bioart.niaid.nih.gov/ National Institute of Allergy & Infectious Diseases
+
+Heidelberg Castle overview image: Eli Omen
+
+Heidelberg Flag tower close up: Daniel Splisser
+
+Heidelberg Tower Demolished:  Christopher Politano
+
+Neo4J graphs and spatial examples: Images: Scientific Software Center, Contents of graphs including Meta Graph: BioCypher team.
+
+
