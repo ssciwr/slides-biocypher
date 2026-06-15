@@ -55,7 +55,7 @@ li { font-size: 0.7em; }
 * Software:
     * Use Python UI / `OntoWeaver` / agentic AI to use `BioCypher`
     * Use `OntoWeaver` for information fusion
-    * The `BioCypher` ecosystem
+    * The `BioCypher` ecosystem and vision
 * How to collaborate on Open-Source Software projects
 * Software Engineering and AI engineering best practices
 * Use cases and scientific insights of the other participants  
