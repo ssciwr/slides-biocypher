@@ -18,7 +18,7 @@ style: |
   table { font-size: 0.72em; }
 ---
 
-# Wednesday C — Registry and Adapter Metadata
+#Sharing Adapters with their Metadata
 
 ## From working adapter to reusable asset
 
@@ -42,42 +42,38 @@ How do we make adapters discoverable and reusable?
 
 ---
 
+# Menti Poll: Please join at **menti.com**
+
+Join Code:
+#`1937 7691`
+<!--
+
 # What information do you need from different kinds of adapters you plan to or currently use?
 
-Please suggest your ideas: 
-
----
-
 # How do you expect to find other adapters realistically?
-
-Please suggest existing or new ideas: 
-
----
 
 # What information about your own adapter do you want to share?
 
 Please share here: 
-
+-->
 ---
 
-# Looking at others adapters
+# What we can capture as Adapter authors
 * Datasets
 * Data Provenance
 * Applicability
 * Nomenclature/Ontology decisions
-* Duplication with datasets you already use
 
 ---
 
 # Why a registry?
 
-A registry helps users answer:
-
-- Which adapters exist?
-- What datasets do they use?
-- What nodes and edges do they emit?
-- Which schema/ontology concepts do they map to?
-- Are there limitations or known issues?
+To help you as a researcher know:
+* Which adapters exist?
+* What datasets do they use?
+* What nodes and edges do they emit?
+* Which schema/ontology concepts do they map to?
+* Are there limitations or known issues?
 
 ---
 
@@ -86,20 +82,9 @@ A registry helps users answer:
 | Metadata type | Describes |
 |---|---|
 | Dataset metadata | Source, license, fields, version, provenance |
-| Adapter metadata | Input data, emitted nodes/edges, assumptions, limitations |
+| Adapter metadata | Input data, emitted nodes/edges(schema), assumptions, limitations |
 
 Both are needed for reuse.
-
----
-
-# What should an adapter registry entry contain?
-
-Minimum information specific to use as an adapter:
-
-- Adapter name
-- Maintainer
-- Input files or APIs
-- Known limitations
 
 ---
 
@@ -110,6 +95,17 @@ Minimum information specific to use as an adapter:
 - Emitted node types
 - Emitted edge types
 - Identifier assumptions
+
+---
+
+# Information specific to use as an adapter we plan to record:
+
+- Adapter name
+- Maintainer
+
+# And possibly:
+- Input files or APIs?
+- Known limitations?
 
 ---
 
@@ -142,15 +138,67 @@ Include:
 
 ---
 
+# Hands-on output
+
+Each group drafts one registry-ready adapter description.
+
+| Track | Adapter |
+|---|---|
+| Novice | Tutorial adapter |
+| Advanced | DrugCentralAdapter |
+
+---
+
+# Live prototype
+
+Please visit: [129.206.117.95](129.206.117.95)
+
+---
+
 # Registry Design
 
 * What is missing here?
 * What information is most important?
 * What helps you trust an adapter?
 <!-- For the viewing of adapters together and then individually -->
+
+
 ---
 
-# Registry Design 2
+
+![bg contain](1.png)
+
+---
+
+![bg contain](2.png)
+
+---
+
+![bg contain](3.png)
+
+---
+
+![bg contain](4.png)
+
+---
+
+![bg contain](5.png)
+
+---
+
+![bg contain](6.png)
+
+---
+
+![bg contain](7.png)
+
+---
+
+![bg contain](8.png)
+
+---
+
+# Registry Design - Datasets
 
 * How does this design approach of using a form work for you?
 * What do you think of being able to provide sample **<10mb** data for the croissant generation process?
@@ -161,25 +209,6 @@ Include:
 <!--* We have prioritised speed by using croissant-baker, amongst other backends, under the hood. -->
 
 <!-- For the meta data croissant generation -->
----
-
-# Registry mockup discussion
-
-- What information should be visible first?
-- What helps users trust an adapter?
-- Where should issues be reported?
-- How should adapter documentation link to source repositories?
-
----
-
-# Hands-on output
-
-Each group drafts one registry-ready adapter description.
-
-| Track | Adapter |
-|---|---|
-| Novice | Tutorial adapter |
-| Advanced | DrugCentralAdapter |
 
 ---
 
