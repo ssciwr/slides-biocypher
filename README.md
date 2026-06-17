@@ -23,6 +23,7 @@ Pages.
 
 ## Wednesday
 
+- [Talks: Judith Wodke](Wednesday/Talks/20260617_MeDaX_JW_small.pdf)
 - [Session A: Open-source software development](Wednesday/A-OSS-best-practices/Open_source_software_collaboration.pdf)
 - [Session B: Harmonizing biomedical data and croissant metadata](Wednesday/B-Harmonizing-Biomedical-data-Croissant-Metadata/wednesday_b_croissant_metadata_slides.html)
 - [Session C: Harmonizing biomedical data and croissant metadata](Wednesday/C-Harmonizing-Biomedical-data-II/04_wednesday_c_registry_adapter_metadata.html)
