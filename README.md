@@ -6,13 +6,16 @@ Pages.
 
 ## Monday
 
-- [Talks — Introduction](Monday/Talks/intro.html)
+- [Talks: Introduction](Monday/Talks/intro.html)
+- [Talks: Steffen Vogler](Monday/Talks/BioCypher_WS_15062026.pdf)
 - [Session A: Participant introductions](Monday/A-participant-intro/intro-participants.html)
 - [Session B: Knowledge Graphs, Ontologies, Schemas and BioCypher](Monday/B-Knowledge%20Graphs-Ontology-Schemas-And-Biocypher/knowledgeSessionAlt.html)
 - [Session C: BioCypher pathways](Monday/C-biocypher-pathways/intro-bc-pathways.html)
 
 ## Tuesday
 
+- [Talks: Johann Dreo](Tuesday/Talks/2026-06_Dreo-al__Explainable-AI-Against-Cancer_OntoWeaver__slides_v2.pdf)
+- [Session A: Hans-on OntoWeaver](Tuesday/A-OntoWeaver/2026-06_Dreo-al__Hands-on-OntoWeaver__slides_v2.pdf)
 - [Session B: Main slides](Tuesday/B-BioCypher-Adapters/sessionb_adapters_main_slides.html)
 - [Session B: Novice Track](Tuesday/B-BioCypher-Adapters/sessionb_novice_track_slides.html)
 - [Session B: Advanced Track](Tuesday/B-BioCypher-Adapters/sessionb_advanced_track_slides.html)
@@ -26,7 +29,8 @@ Pages.
 
 ## Thursday
 
-- [Session B: Building adapters in BioCypher](Thursday/B-Building%20adapters%20in%20BioCypher/05_thursday_b_multiple_adapters_information_fusion.html)
+- [Session B: Information Fusion with OntoWeaver](Thursday/B-Fusion/2026-06_Dreo-al__Hands-on-Fusion__slides_v1.pdf)
+- [Session C: Building adapters in BioCypher](Thursday/C-Building%20adapters%20in%20BioCypher/05_thursday_b_multiple_adapters_information_fusion.html)
 
 
 The decks are authored as [Marp](https://marp.app/) markdown.
