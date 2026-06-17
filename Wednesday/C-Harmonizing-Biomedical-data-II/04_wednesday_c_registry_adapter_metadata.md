@@ -42,6 +42,33 @@ How do we make adapters discoverable and reusable?
 
 ---
 
+# What information do you need from different kinds of adapters you plan to or currently use?
+
+Please suggest your ideas: 
+
+---
+
+# How do you expect to find other adapters realistically?
+
+Please suggest existing or new ideas: 
+
+---
+
+# What information about your own adapter do you want to share?
+
+Please share here: 
+
+---
+
+# Looking at others adapters
+* Datasets
+* Data Provenance
+* Applicability
+* Nomenclature/Ontology decisions
+* Duplication with datasets you already use
+
+---
+
 # Why a registry?
 
 A registry helps users answer:
@@ -67,17 +94,22 @@ Both are needed for reuse.
 
 # What should an adapter registry entry contain?
 
-Minimum information:
+Minimum information specific to use as an adapter:
 
 - Adapter name
-- Data source
-- Version
 - Maintainer
 - Input files or APIs
+- Known limitations
+
+---
+
+# Information we can derive from reusing Croissant!:
+
+- Data source
+- Version
 - Emitted node types
 - Emitted edge types
 - Identifier assumptions
-- Known limitations
 
 ---
 
@@ -107,11 +139,31 @@ Include:
 - Identifier limitation: provisional gene symbols
 - Data cleaning: multi-gene splitting and delimiter sanitization
 
+
+---
+
+# Registry Design
+
+* What is missing here?
+* What information is most important?
+* What helps you trust an adapter?
+<!-- For the viewing of adapters together and then individually -->
+---
+
+# Registry Design 2
+
+* How does this design approach of using a form work for you?
+* What do you think of being able to provide sample **<10mb** data for the croissant generation process?
+* How do you think you will update your croissant file when data changes?
+    * Manually editing?
+    * With other/own tool
+    * Resubmitting sample data to the form
+<!--* We have prioritised speed by using croissant-baker, amongst other backends, under the hood. -->
+
+<!-- For the meta data croissant generation -->
 ---
 
 # Registry mockup discussion
-
-Use the registry mockups to discuss:
 
 - What information should be visible first?
 - What helps users trust an adapter?
