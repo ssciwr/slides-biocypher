@@ -23,14 +23,19 @@ Pages.
 
 ## Wednesday
 
+- [Talks: Carl Herrmann](Wednesday/Talks/BioCypher_workshop_Talk_Carl_Herrmann_small.pdf)
+- [Talks: Judith Wodke](Wednesday/Talks/20260617_MeDaX_JW_small.pdf)
 - [Session A: Open-source software development](Wednesday/A-OSS-best-practices/Open_source_software_collaboration.pdf)
 - [Session B: Harmonizing biomedical data and croissant metadata](Wednesday/B-Harmonizing-Biomedical-data-Croissant-Metadata/wednesday_b_croissant_metadata_slides.html)
 - [Session C: Harmonizing biomedical data and croissant metadata](Wednesday/C-Harmonizing-Biomedical-data-II/04_wednesday_c_registry_adapter_metadata.html)
 
 ## Thursday
 
+- [Talks: Claire Laudy](Thursday/Talks/Claire_Laudy_What-is-hlif-and-why-is-it-important.pdf)
 - [Session B: Information Fusion with OntoWeaver](Thursday/B-Fusion/2026-06_Dreo-al__Hands-on-Fusion__slides_v1.pdf)
 - [Session C: Building adapters in BioCypher](Thursday/C-Building%20adapters%20in%20BioCypher/05_thursday_b_multiple_adapters_information_fusion.html)
 
 
 The decks are authored as [Marp](https://marp.app/) markdown.
+
+This material is licensed under a [CC-BY 4.0 license](LICENSE) unless noted on the slides. You are free to use these materials while paying attribution to the authors.
