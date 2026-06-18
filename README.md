@@ -23,6 +23,7 @@ Pages.
 
 ## Wednesday
 
+- [Talks: Carl Herrmann](Wednesday/Talks/BioCypher_workshop_Talk_Carl_Herrmann_small.pdf)
 - [Talks: Judith Wodke](Wednesday/Talks/20260617_MeDaX_JW_small.pdf)
 - [Session A: Open-source software development](Wednesday/A-OSS-best-practices/Open_source_software_collaboration.pdf)
 - [Session B: Harmonizing biomedical data and croissant metadata](Wednesday/B-Harmonizing-Biomedical-data-Croissant-Metadata/wednesday_b_croissant_metadata_slides.html)
@@ -35,3 +36,5 @@ Pages.
 
 
 The decks are authored as [Marp](https://marp.app/) markdown.
+
+This material is licensed under a [CC-BY 4.0 license](LICENSE) unless noted on the slides. You are free to use these materials while paying attribution to the authors.
