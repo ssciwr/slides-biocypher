@@ -35,6 +35,9 @@ Pages.
 - [Session B: Information Fusion with OntoWeaver](Thursday/B-Fusion/2026-06_Dreo-al__Hands-on-Fusion__slides_v1.pdf)
 - [Session C: Building adapters in BioCypher](Thursday/C-Building%20adapters%20in%20BioCypher/05_thursday_b_multiple_adapters_information_fusion.html)
 
+## Friday
+- [Session B: Conclusion and goodbye](Friday/goodbye.html)
+
 
 The decks are authored as [Marp](https://marp.app/) markdown.
 
