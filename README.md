@@ -34,7 +34,7 @@ Pages.
 - [Talks: Claire Laudy](Thursday/Talks/Claire_Laudy_What-is-hlif-and-why-is-it-important.pdf)
 - [Session B: Information Fusion with OntoWeaver](Thursday/B-Fusion/2026-06_Dreo-al__Hands-on-Fusion__slides_v2.pdf)
 - [Session C: Building adapters in BioCypher](Thursday/C-Building%20adapters%20in%20BioCypher/05_thursday_b_multiple_adapters_information_fusion.html)
-- [Datasets](Thursday/D-Datasets/datasets_workshop.md): some datasets we use during the workshop.
+- [Datasets](https://github.com/ssciwr/slides-biocypher/blob/main/Thursday/D-Datasets/datasets_workshop.md): some datasets we use during the workshop.
 
 ## Friday
 - [Session B: Conclusion and goodbye](Friday/goodbye.html)
